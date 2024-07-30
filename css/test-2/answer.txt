@@ -1,0 +1,7 @@
+1. The CSS means cascading style sheet. it is used for styling the webpage with color ,animation and custom layout.
+CSS Selectors are type, id, class, group and universal.
+2.The CSS box model is used for the layout. it consist of the margin, border, padding and content.
+-content :- the content is where the text ,image and other content related things will be placed in it. it is also in the center of the box model.
+-padding :- the padding is the transparent space between the border and the content.
+-border :- the border is a line at the edge of the padding.
+-margin :- the margin is the transparent space at the outside layer of the box model.

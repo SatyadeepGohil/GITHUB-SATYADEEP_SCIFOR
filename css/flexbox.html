@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .container {
+            display: flex;
+            /* main axis of direction */
+            flex-direction: column;
+            /* it allows wrap items into multiple lines. */
+            flex-wrap: wrap;
+            /* distribute the items along main axis. */
+            justify-content: space-between;
+            /* align the items aling cross axis */
+            align-items: center;
+            /* distributes the line when there is extra space in the cross axis */
+            align-content: space-around;
+            height: 200vh;
+            border: 2px solid burlywood;
+            background-color: aqua;
+        }
+
+        .item {
+            /* items grow to fill available space. */
+            flex-grow: 1;
+            /* items shrink to fit into the container. */
+            /* flex-shrink: 1; */
+            /* it gives default size before distributing space */
+            flex-basis: 400px;
+            width: 300px;
+            /* order of the items */
+            order:2;
+            /* it overides align items property */
+            align-self: flex-start;
+            background: lightcoral;
+            /* PACE BETWEEN THE CONTENT AND BORDER OF AN ELEMENT. */
+            padding: 20px;
+            /* AREA ADDED OUTSIDE THE BORDER */
+            margin: 20px;
+            color: white;
+            text-align: center;
+
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flexbox layout example</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item">problem 1</div>
+        <div class="item">problem 2</div>
+        <div class="item">problem 3</div>
+        <div class="item">problem 4</div>
+        <div class="item">problem 5</div>
+    </div>
+</body>
+
+</html>
