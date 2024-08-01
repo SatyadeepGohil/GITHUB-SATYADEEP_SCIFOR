@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        form {
+            margin: 10px;
+        }
+        label,input {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label>Name:</label><br>
+        <input type="text" pattern="[a-z]+" required><br>
+        <label>Username:</label><br>
+        <input type="text" pattern="[a-z]+" required><br>
+        <label>Password:</label><br>
+        <input type="password" pattern="[a-z]+" required><br>
+        <label>Age:</label><br>
+        <input type="number" required min="18" max="60"><br>
+        <input type="submit">
+    </form>
+</body>
+</html>
