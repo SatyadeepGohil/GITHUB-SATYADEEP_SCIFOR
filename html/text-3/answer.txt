@@ -1,0 +1,1 @@
+1. Semantic html have tags that states itself like <nav> will be for the navigation and <article> for a article in the website it also separate itself from other elements.
