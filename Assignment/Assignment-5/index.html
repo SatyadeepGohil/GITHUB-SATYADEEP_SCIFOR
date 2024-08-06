@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            height: 100vh;
+        }
+        h1 {
+            cursor: pointer;
+        }
+        p::first-line {
+            background-color: gold;
+            font-style: italic;
+        }
+
+        #para::first-letter {
+            font-size: 2rem;
+            background-color: red;
+            color: white;
+        }
+
+        div {
+            margin: 100px;
+            cursor: crosshair;
+        }
+
+        #container-1 {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+
+        #container-1::before {
+            content: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFFfVpqK3SKCMpbRiV9jl_UtuO-a5MhWring&s);
+        }
+
+        #container-2::after {
+            content: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3yJanecUbXX9CnaLxKxvCJver2SjyE5qvtg&s);
+        }
+    </style>
+</head>
+<body>
+    <h1>This a heading</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi hic repudiandae earum aliquam incidunt tempora animi ullam sequi tempore iste voluptate amet beatae sed nostrum quisquam repellendus error, quam dicta!</p>
+    <p id="para">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit sit laboriosam quasi, quam ipsum ut itaque enim iure dicta, dolorum assumenda inventore magni, deleniti corporis sequi adipisci consequatur. Voluptatibus, odit.</p>
+
+    <div id="container-1"></div>
+    <div id="container-2"></div>
+</body>
+</html>
