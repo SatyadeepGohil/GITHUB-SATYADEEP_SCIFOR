@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        div {
+            height: 60px;
+            width: 200px;
+            text-overflow: ellipsis;
+            text-align: center;
+            margin: 10px;
+            overflow: hidden;
+            border: 1px solid black;
+        }
+        p {
+            text-shadow: 1px 1px blue;
+        }
+
+        #text-clip {
+            text-overflow: clip;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus accusamus a quod, voluptatibus voluptate
+            recusandae. Iure, esse ducimus. Commodi, natus culpa aliquam quae quod modi facere neque totam accusamus laudantium!
+        </p>
+    </div>
+
+    <div class="text-clip">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus accusamus a quod, voluptatibus voluptate
+            recusandae. Iure, esse ducimus. Commodi, natus culpa aliquam quae quod modi facere neque totam accusamus laudantium!
+        </p>
+    </div>
+</body>
+</html>
