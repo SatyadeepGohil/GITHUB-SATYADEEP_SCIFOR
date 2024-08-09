@@ -1,0 +1,33 @@
+:root {
+    --primary-color: skyblue;
+    --secondary-color: lightgreen;
+    --text-color: darkgrey;
+    --button-padding: 12px 24px;
+    --border-radius: 8px;
+}
+
+body {
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+h1,p {
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    padding: 10px;
+    box-shadow: 2px 2px 5px 1px black;
+}
+
+button {
+    margin: 50px;
+    padding: var(--button-padding);
+    border-radius: var(--border-radius);
+    border: none;
+    transition: all linear 0.3s;
+}
+
+button:active {
+    background-color: crimson;
+    transform: scale(0.9);
+}
