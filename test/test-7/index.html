@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card with Foundation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css">
+    <style>
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .card-image {
+            border-radius: 50%;
+            max-width: 150px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .card-title {
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .card-description,
+        .card-bio {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all linear 0.2s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .button:active {
+            transform: scale(0.8);
+        }
+
+        .card-divider {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x align-center">
+            <div class="cell small-12 medium-8 large-6">
+                <div class="card text-center">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB3VlIHqJmoDG-I8ml40GACuxG2dn671rKfw&s"
+                        alt="Profile Image" class="card-image">
+                    <div class="card-section">
+                        <h4 class="card-title">John Doe</h4>
+                        <p class="card-description">Full Stack Developer</p>
+                        <p class="card-bio">Passionate developer with 5+ years of experience in creating dynamic and
+                            user-friendly websites and applications. Enjoys working with modern web technologies and
+                            always eager to learn more.</p>
+                    </div>
+                    <div class="card-divider">
+                        <button class="button">Contact</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
