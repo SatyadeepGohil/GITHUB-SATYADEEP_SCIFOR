@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -25,7 +28,7 @@
     </header>
     <main>
         <div id="Delivery-panel">
-            <h1>Are you straving</h1>
+            <h1>Are you straving?</h1>
             <h6>Within a few clicks, find meals that are accessible near you</h6>
             <div>
                 <span>
@@ -38,17 +41,105 @@
                         Pickup
                     </button>
                 </span>
-                <div>
+                <span>
                     <img src="./images/location.svg" alt="">
                     <input type="text" placeholder="Enter Your Address">
-                    <button>
+                    <button id="find-food">
                         <img src="./images/magnifier.png" alt="">
                         Find Food
                     </button>
-                </div>
+                </span>
             </div>
         </div>
         <img src="./images/intro-dish.png" alt="" id="intro-dish">
     </main>
+
+    <section id="discount-food">
+
+        <div class="discount-food-container">
+            <img src="./images/food-image-1.png" alt="">
+            <div id="discount">
+                <p id="discount-number">10</p>
+                <span>
+                    <p>%</p>
+                    <p>off</p>
+                </span>
+            </div>
+            <p id="food-name">Greys Vage</p>
+            <p id="discount-expiry">6 Days Remaining</p>
+        </div>
+
+        <div class="discount-food-container">
+            <img src="./images/food-image-2.png" alt="">
+            <div id="discount">
+                <p id="discount-number">10</p>
+                <span>
+                    <p>%</p>
+                    <p>off</p>
+                </span>
+            </div>
+            <p id="food-name">Greys Vage</p>
+            <p id="discount-expiry">6 Days Remaining</p>
+        </div>
+
+        <div class="discount-food-container">
+            <img src="./images/food-image-3.png" alt="">
+            <div id="discount">
+                <p id="discount-number">15</p>
+                <span>
+                    <p>%</p>
+                    <p>off</p>
+                </span>
+            </div>
+            <p id="food-name">Greys Vage</p>
+            <p id="discount-expiry">7 Days Remaining</p>
+        </div>
+
+        <div class="discount-food-container">
+            <img src="./images/food-image-4.png" alt="">
+            <div id="discount">
+                <p id="discount-number">10</p>
+                <span>
+                    <p>%</p>
+                    <p>off</p>
+                </span>
+            </div>
+            <p id="food-name">Greys Vage</p>
+            <p id="discount-expiry">6 Days Remaining</p>
+        </div>
+    </section>
+
+    <section id="company-delivery-process">
+        <h1>How does it work</h1>
+
+        <div id="icon-container">
+
+            <div>
+                <img src="./images/Map Marker.svg" alt="">
+                <p id="icon-primary-text">Select Location</p>
+                <p id="icon-secondary-text">Choose the location where your food will be delivered.</p>
+            </div>
+
+            <div>
+                <img src="./images/Menu.svg" alt="">
+                <p id="icon-primary-text">Choose order</p>
+                <p id="icon-secondary-text">Check over hundreds of menus to pick your favorite food</p>
+            </div>
+
+            <div>
+                <img src="./images/Invoice.svg" alt="">
+                <p id="icon-primary-text">Pay advanced</p>
+                <p id="icon-secondary-text">It's quick, safe, and simple. Select several methods of payment</p>
+            </div>
+
+            <div>
+                <img src="./images/Donut.svg" alt="">
+                <p id="icon-primary-text">Enjoy meals</p>
+                <p id="icon-secondary-text">Food is made and delivered directly to your home.</p>
+            </div>
+        </div>
+    </section>
+
+    <section></section>
 </body>
 </html>

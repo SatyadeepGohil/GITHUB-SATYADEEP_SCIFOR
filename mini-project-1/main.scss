@@ -7,6 +7,7 @@
 body {
     width: 100%;
     height: 100%;
+    font-family: 'Moderustic', sans-serif;
 }
 
 header {
@@ -15,7 +16,7 @@ header {
     align-items: center;
 
     img {
-        width: 30%;
+        width: 20%;
         margin-left: 10px;
     }
     nav {
@@ -27,6 +28,14 @@ header {
             list-style-type: none;
             a {
                 text-decoration: none;
+                color: black;
+            }
+            a:active {
+                color: #F65900;
+            }
+            a:hover {
+                transform: translate(0.9);
+                transition: all linear 0.2s;
             }
         }
     }
@@ -62,7 +71,7 @@ header {
 
 main {
     width: 100%;
-    height: 100%;
+    height: 500px;
     background: linear-gradient(#FDCB16, #FBCD26 , #FFB908);
     display: flex;
     justify-content: space-around;
@@ -73,10 +82,11 @@ main {
     }
 
     #intro-dish {
-        width: 30%;
+        width: 20%;
         border: 1px solid black;
         border-radius: 50%;
-        box-shadow: -40px 30px 100px 10px black, 1px 1px 30px 1px black;
+        box-shadow: -40px 30px 100px 1px black, 1px 1px 20px 1px black;
+        filter: brightness(1.5) contrast(1.2);
     }
 }
 
@@ -87,9 +97,145 @@ main {
     flex-direction: column;
     text-align: center;
     h1 {
-        font-size: 3rem;
+        font-size: 3.5rem;
+        margin: 20px;
     }
     h6 {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 50px;
+        padding: 20px;
+        span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            input {
+                padding: 10px;
+                margin-left: 10px;
+                border: none;
+            }
+            button {
+                width: 130px;
+                padding: 10px;
+                margin: 10px;
+                font-weight: 800;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: none;
+                border-radius: 10px;
+                img {
+                    margin-right: 10px;
+                }
+            }
+
+            button:hover {
+                background-color: rgba(0, 0, 0, 0.103);
+            }
+        }
+    }
+}
+
+#find-food {
+    background: linear-gradient(72deg,#FF7A7A, #F65900);
+    border-radius: 5px;
+}
+
+#discount-food {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 100px;
+    img {
+        width: 300px;
+        border-radius: 20px;
+    }
+}
+
+.discount-food-container {
+    position: relative;
+    font-weight: bolder;
+    height: 100%;
+    margin: 20px;
+    #discount {
+        position: absolute;
+        top: 54%;
+        right: 68%;
+        background-color: #FFB30E;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        border-bottom-left-radius: 20px;
+        border-top-right-radius: 20px;
+        padding: 10px;
+        #discount-number {
+            font-size: 3rem;
+            margin: 2px;
+        }
+        span {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+        }
+    }
+}
+
+#foodname {
+    color: #424242;
+    margin-top: 10px;
+}
+
+#discount-expiry {
+    background-color: rgba(241, 114, 40, 0.493);
+    color: #F17228;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+#company-delivery-process {
+    margin-top: 100px;
+    text-align: center;
+    h1 {
+        color: #F17228;
+    }
+
+    #icon-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 10px;
+        div {
+            margin: 10px;
+        }
+        p {
+            margin: 10px;
+        }
+    }
+}
+
+#icon-primary-text {
+    color: #434343;
+    font-weight: bolder;
+    font-size: 1.3rem;
+}
+
+#icon-secondary-text {
+    color: gray;
+    font-weight: 500;
+    text-wrap: wrap;
+    width: 250px;
 }
