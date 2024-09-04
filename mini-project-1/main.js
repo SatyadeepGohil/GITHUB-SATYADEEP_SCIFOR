@@ -1,36 +1,29 @@
-// Select buttons and container
-let nextBtn = document.querySelector('.right');
-let previousBtn = document.querySelector('.left');
-let cardContainer = document.getElementById('card-container');
-let cards = document.querySelectorAll('.card'); // Use querySelectorAll for NodeList
+let next = document.getElementById('right');
+let previous = document.getElementById('left')
+let cards = document.getElementsByClassName('card');
 
-const cardWidth = cards[0].offsetWidth;
-const cardMarginRight = parseFloat(window.getComputedStyle(cards[0]).marginRight);
-const containerWidth = document.querySelector('#container').offsetWidth;
+let cardWidth = cards[0].offsetWidth;
+let cardMarginRight = parseInt(getComputedStyle(cards[0]).marginRight);
+let move = cardWidth + cardMarginRight;
+let currentIndex = 0;
 
-// Initialize offset
-let offset = 0;
-
-// Calculate the maximum offset
-const totalWidth = Array.from(cards).reduce((acc, card) => acc + cardWidth + cardMarginRight, 0);
-const maxOffset = -(totalWidth - containerWidth);
-
-// Update the transform for the card container
-function updateCardPosition() {
-    cardContainer.style.transform = `translateX(${offset}px)`;
+function slidecards() {
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].style.transform = `translateX(${move * (currentIndex * -1)}px)`
+    }
 }
 
-// Next button event listener
-nextBtn.addEventListener('click', () => {
-    const newOffset = offset - (cardWidth + cardMarginRight);
-    offset = Math.max(newOffset, maxOffset);
-    updateCardPosition();
-});
+next.addEventListener('click', () => {
+    if (currentIndex < cards.length - 1) {
+        currentIndex++;
+        slidecards()
+    }
+})
 
-// Previous button event listener
-previousBtn.addEventListener('click', () => {
-    const newOffset = offset + (cardWidth + cardMarginRight);
-    offset = Math.min(newOffset, 0);
-    updateCardPosition();
-});
 
+previous.addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        slidecards();
+    }
+})
