@@ -436,3 +436,72 @@ main {
         background-color: #FFB30E;
     }
 }
+
+#food-search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+
+    span {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        margin-bottom: 20px;
+
+        h1 {
+            font-size: 1.8rem;
+        }
+    }
+    #food-category-container {
+        display: flex;
+        width: 90%;
+        overflow: hidden;
+
+        .food-category-cards {
+            display: flex;
+            margin-right: 20px;
+            flex-direction: column;
+            img {
+                border-radius: 50%;
+            }
+            p {
+                text-align: center;
+                margin: 20px;
+                color: grey;
+                font-weight: 700;
+                font-size: 1.3rem;
+            }
+        }
+    }
+}
+
+#food-category-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        color: #FFB30E;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 20px;
+        margin-right: 20px;
+    }
+
+    button {
+        display: grid;
+        place-content: center;
+        margin-right: 10px;
+        width: 60px;
+        height: 60px;
+        border: none;
+        border-radius: 50%;
+        font-size: 45px;
+        background-color: #FFB30E;
+        color: white;
+        box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.575);
+    }
+}

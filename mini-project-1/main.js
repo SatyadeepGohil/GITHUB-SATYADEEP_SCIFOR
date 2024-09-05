@@ -27,3 +27,33 @@ previous.addEventListener('click', () => {
         slidecards();
     }
 })
+
+
+let foodNext = document.getElementById('food-category-next');
+let foodPrevious = document.getElementById('food-category-previous');
+let foodCards = document.getElementsByClassName('food-category-cards');
+
+let foodCardsWidth = foodCards[0].offsetWidth;
+let foodCardsMarginRight = parseInt(getComputedStyle(foodCards[0]).marginRight);
+let foodCardsMove = foodCardsWidth + foodCardsMarginRight;
+let foodCurrentIndex = 0;
+
+function slideFoodCards() {
+    for (let i = 0; i < foodCards.length; i ++) {
+        foodCards[i].style.transform = `translateX(${foodCardsMove * (foodCurrentIndex * -1)}px)`
+    }
+}
+
+foodNext.addEventListener('click', () => {
+    if (foodCurrentIndex < foodCards.length -1) {
+        foodCurrentIndex++;
+        slideFoodCards();
+    }
+})
+
+foodPrevious.addEventListener('click', () => {
+    if (foodCurrentIndex > 0) {
+        foodCurrentIndex--;
+        slideFoodCards();
+    }
+})
