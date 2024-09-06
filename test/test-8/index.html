@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison Operators</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input {
+            font-size: 2rem;
+        }
+
+        button {
+            font-size: 1.5rem;
+            background-color: grey;
+            border: none;
+            padding: 10px;
+            transition: all linear 0.2s;
+        }
+
+        button:hover {
+            background-color: rgba(128, 128, 128, 0.712);
+        }
+
+        button:active {
+            transform: scale(0.9);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" placeholder="Enter first number" id="first-number">
+        <input type="text" placeholder="Enter second number" id="second-number">
+        <button id="compare-button">Submit</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        document.getElementById('compare-button').addEventListener('click', function () {
+
+            let a = parseFloat(document.getElementById('first-number').value);
+            let b = parseFloat(document.getElementById('second-number').value);
+
+            if (isNaN(a) || isNaN(b)) {
+                alert("Please enter valid numbers.");
+                return;
+            }
+            let results = "";
+            if (a == b) {
+                results += `a == b: true - Conclusion: a is equal to b (in value).<br>`;
+            } else {
+                results += `a == b: false - Conclusion: a is not equal to b (in value).<br>`;
+            }
+
+            if (a === b) {
+                results += `a === b: true - Conclusion: a is strictly equal to b (in value and type).<br>`;
+            } else {
+                results += `a === b: false - Conclusion: a is not strictly equal to b (in value or type).<br>`;
+            }
+
+            if (a != b) {
+                results += `a != b: true - Conclusion: a is not equal to b (in value).<br>`;
+            } else {
+                results += `a != b: false - Conclusion: a is equal to b (in value).<br>`;
+            }
+
+            if (a !== b) {
+                results += `a !== b: true - Conclusion: a is not strictly equal to b (in value or type).<br>`;
+            } else {
+                results += `a !== b: false - Conclusion: a is strictly equal to b (in value and type).<br>`;
+            }
+
+            if (a > b) {
+                results += `a > b: true - Conclusion: a is greater than b.<br>`;
+            } else {
+                results += `a > b: false - Conclusion: a is not greater than b.<br>`;
+            }
+
+            if (a < b) {
+                results += `a < b: true - Conclusion: a is less than b.<br>`;
+            } else {
+                results += `a < b: false - Conclusion: a is not less than b.<br>`;
+            }
+
+            if (a >= b) {
+                results += `a >= b: true - Conclusion: a is greater than or equal to b.<br>`;
+            } else {
+                results += `a >= b: false - Conclusion: a is not greater than or equal to b.<br>`;
+            }
+
+            if (a <= b) {
+                results += `a <= b: true - Conclusion: a is less than or equal to b.<br>`;
+            } else {
+                results += `a <= b: false - Conclusion: a is not less than or equal to b.<br>`;
+            }
+
+            document.getElementById('results').innerHTML = results;
+        });
+    </script>
+</body>
+
+</html>
