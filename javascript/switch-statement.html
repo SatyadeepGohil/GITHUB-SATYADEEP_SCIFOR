@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const today = new Date().getDay();
+        let message = "Today is ";
+
+        switch (today) {
+            case 0:
+                message += "Sunday! Rest and recharge.";
+                break;
+            case 1:
+                message += "Monday! Start of the work week.";
+                break;
+            case 2:
+                message += "Tuesday! Keep going.";
+                break;
+            case 3:
+                message += "Wednesday! Halfway through the week.";
+                break;
+            case 4:
+                message += "Thursday! Almost the weekend.";
+                break;
+            case 5:
+                message += "Friday! The weekend is near.";
+                break;
+            case 6:
+                message += "Saturday! Time to relax.";
+                break;
+            default:
+                message += "an unknown day.";
+                break;
+        }
+        
+        document.write(message);
+
+    </script>
+</body>
+</html>
