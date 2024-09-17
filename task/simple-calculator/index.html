@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="calculator">
+    <input type="text" id="calculator-screen">
+    <div class="calculator-keys">
+      <button class="key">C</button>
+      <button class="key">/</button>
+      <button class="key">*</button>
+      <button class="key">-</button>
+      <button class="key">7</button>
+      <button class="key">8</button>
+      <button class="key">9</button>
+      <button class="key">+</button>
+      <button class="key">4</button>
+      <button class="key">5</button>
+      <button class="key">6</button>
+      <button class="key">1</button>
+      <button class="key">2</button>
+      <button class="key">3</button>
+      <button class="key">0</button>
+      <button class="key">.</button>
+      <button class="key">=</button>
+    </div>
+  </div>
+
+  <script>
+    const screen = document.getElementById('calculator-screen');
+    const keys = document.querySelectorAll('.key');
+    let currentInput = '';
+
+    keys.forEach(key => {
+      key.addEventListener('click', () => {
+        const keyValue = key.textContent;
+        if (keyValue === 'C') {
+          currentInput = '';
+          screen.value = '';
+        }
+        else if (keyValue === '=') {
+          currentInput = eval(currentInput);
+          screen.value = currentInput;
+        }
+        else {
+          currentInput += keyValue;
+          screen.value = currentInput;
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
