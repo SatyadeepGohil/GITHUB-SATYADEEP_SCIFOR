@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            width: 200px;
+            height: 350px;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        function recipe() {
+            fetch('https://dummyjson.com/products')
+                .then(res => res.json())
+                .then(data => {
+                    let containerHTML = '';
+                    data.products.forEach(product => {
+                        containerHTML += `<div class="card">
+                                        <h4>Brand Name: ${product.brand || product.title}<h4>
+                                        <p>Name: ${product.title}</p>
+                                        <p>Description: ${product.description}</p>
+                                        <p>Price: ${product.price}<p>
+                                     </div>`;
+                    });
+                    document.getElementById('container').innerHTML = containerHTML;
+                })
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Welcome to our store</h1>
+    <button onclick="recipe()">Click for Products to show</button>
+    <div id="container"></div>
+
+</body>
+
+</html>
