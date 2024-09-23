@@ -65,7 +65,6 @@ function checkLoginStatus() {
         console.log('login succes')
     }
     else {
-        loginContainer.style.display = 'block';
         console.log('login failed')
     }
 }
@@ -145,9 +144,9 @@ window.addEventListener('load', () => {
     const street = data.address.road || data.address.neighbourhood || data.address.suburb || 'Street not found';
     const city = data.address.city || data.address.town || data.address.village || data.address.county || data.address.locality || 'City not found';
 
-    /* if (street === 'Street not found' || city === 'City not found') {
+    if (street === 'Street not found' || city === 'City not found') {
         alert("Our services couldn't find your whole address. So please enter your street and town manually.");
-    } */
+    }
 
     if (street !== 'Street not found' && city !== 'City not found') {
     address.innerText = `${street}, ${city}`;

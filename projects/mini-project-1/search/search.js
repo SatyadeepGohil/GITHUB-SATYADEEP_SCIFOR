@@ -19,7 +19,7 @@ const address = localStorage.getItem('address');
 let searchAddress = document.getElementById('top-address');
 if (address) {searchAddress.innerText = address}
 
-xhr.open('GET', '/search/restaurant.json', true);
+xhr.open('GET', 'restaurant.json', true);
 xhr.onload = function() {
   if (xhr.status >= 200 && xhr.status < 300) {
     data = JSON.parse(xhr.responseText);
