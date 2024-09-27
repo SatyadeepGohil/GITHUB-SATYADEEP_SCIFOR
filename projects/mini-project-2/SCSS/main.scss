@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nunito';
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+
+    nav {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px;
+
+        li {
+            list-style-type: none;
+
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+
+    img {
+        width: 50%;
+        height: 100%;
+        background-color: black;
+    }
+}
