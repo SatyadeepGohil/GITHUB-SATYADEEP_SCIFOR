@@ -1,0 +1,50 @@
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 2rem;
+    width: 600px;
+    gap: 30px;
+    margin-top: 50px;
+    padding: 15px;
+
+    div {
+        display: flex;
+        justify-content: space-between;
+
+        input {
+            font-size: 1rem;
+            font-family: inherit;
+            background-color: inherit;
+            color: inherit;
+        }
+
+        textarea {
+            font-size: 1rem;
+            font-family: inherit;
+            padding: 10px;
+            background-color: inherit;
+            color: inherit;
+        }
+    }
+
+    button {
+        width: 50%;
+        align-self: center;
+        font-size: 1.5rem;
+        padding: 5px;
+        font-family: inherit;
+        background-color: #50FFB1;
+        border: none;
+        transition: all ease .3s;
+    }
+
+    button:hover {
+        filter: drop-shadow(0px 0px 5px #50FFB1) brightness(1.4);
+    }
+
+    button:active {
+        background-color:#3C896D;
+        transform: scale(0.9);
+    }
+}

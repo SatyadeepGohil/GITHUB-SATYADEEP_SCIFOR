@@ -1,3 +1,14 @@
+@import './contact';
+@import './about';
+
+@font-face {
+    font-family: 'Sui Generis';
+    src: url('../fonts/SuiGenerisRg-Regular.woff'),
+        url('../fonts/SuiGenerisRg-Regular.woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +20,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Nunito';
+    font-family: 'Sui Generis';
+    background-color: black;
+    color: #50FFB1;
 }
 
 header {

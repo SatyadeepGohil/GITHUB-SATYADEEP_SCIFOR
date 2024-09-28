@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./SCSS/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="about.html">About me</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </nav>
+    </header>
+    <form>
+
+        <div>
+            Name: <input type="text" required placeholder="Julia Thompson">
+        </div>
+
+        <div>
+            Email: <input type="email" required placeholder="julia@gmail.com">
+        </div>
+
+        <div>
+            Subject: <input type="text" name="subject" required placeholder="Meeting for Frontend">
+        </div>
+
+        <div>
+            Message: <textarea name="message" id="message" cols="20" rows="20" placeholder="Hi,
+
+I’m interested in discussing your frontend needs and how we can move forward. Are you available for a meeting this week to go over the details?
+
+Let me know a time that works for you."></textarea>
+        </div>
+       
+        <button type="submit">Send</button>
+    </form>
+
+    <script>
+        function formValidaton(event) {
+            event.preventDefault();
+
+            const name = document.querySelector('input[type="text"]');
+            const email = document.querySelector('input[type="email"]');
+            const subject = document.querySelector('input[name="subject"]')
+            const message = document.querySelector('textarea');
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,6}$/;
+            const form = document.querySelector('form');
+
+            if (name.value.trim() === "") {
+                alert('Please enter your name.');
+                return false;
+            }
+
+            if (!emailPattern.test(email.value)) {
+                alert('Please enter a correct email.')
+                return false;
+            }
+
+            if (subject.value.trim() === '') {
+                alert('Please enter a subject')
+                return false;
+            }
+
+            if (message.value.trim() === "") {
+                alert('Please enter a message')
+                return false;
+            }
+
+            alert('Form submitted successfully');
+            event.target.submit();
+        }
+
+        form.addEventListener('submit', formValidaton)
+    </script>
+</body>
+</html>
