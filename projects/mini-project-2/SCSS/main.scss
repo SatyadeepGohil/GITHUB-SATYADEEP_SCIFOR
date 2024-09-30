@@ -26,8 +26,6 @@ header {
     width: 100%;
     display: flex;
     justify-content: center;
-    position: sticky;
-    top: 0;
 
     nav {
         width: 80%;
@@ -41,6 +39,17 @@ header {
 
             a {
                 text-decoration: none;
+                color: inherit;
+                transition: all ease 0.2s;
+            }
+
+            a:hover {
+                cursor: pointer;
+                font-size: larger;
+            }
+
+            a:visited {
+                color: #FE5F55;
             }
         }
     }
@@ -91,5 +100,7 @@ main {
         transform: translateY(0);
     }
 }
+
+@import './project';
 @import './contact';
 @import './about';
