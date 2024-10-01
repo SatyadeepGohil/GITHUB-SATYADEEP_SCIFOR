@@ -8,20 +8,109 @@
 
 </head>
 <body>
-    <header>
+    <header id="top">
         <nav>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="about.html">About me</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#welcome-message">Home</a></li>
+            <li><a href="#project-showcase">Projects</a></li>
+            <li><a href="#about-container">About me</a></li>
+            <li><a href="#form">Contact</a></li>
         </nav>
     </header>
     <main>
-        <section class="welcome-message">
+        <section  id="welcome-message">
             <h1>Welcome to My Portfolio</h1>
             <p>Hi, I'm Satyadeep, a frontend developer passionate about crafting responsive and accurate web experiences.
             </p>
         </section>
     </main>
+
+    <section id="project-showcase">
+        <h1 id="project-heading">Projects Showcase</h1>
+        
+        <div id="project-container">
+        
+            <div class="project-card">
+                <img src="images/idea-sharing-website-thumbnail.png" alt="" class="project-img">
+                <h3><span>Title:</span> Idea sharing website landing page</h3>
+                <p><span>Description: </span> This is just a landing page for a website that was built for practicing and
+                    understanding design.The ui will not work.</p>
+        
+                <button><a href="https://glittering-sorbet-408a1e.netlify.app">View the site</a></button>
+            </div>
+        
+            <div class="project-card">
+                <img src="images/food-website-thumbnail.png" alt="" class="project-img">
+                <h3><span>Title:</span> Food delivery website</h3>
+                <p><span>Description: </span> The website has a landing page and a search page for searching food items and
+                    restaurant. It also use your location for to add the address automatically.</p>
+        
+                <button><a href="https://ubiquitous-haupia-7a0be3.netlify.app/">View the site</a></button>
+            </div>
+        
+            <div class="project-card">
+                <img src="images/travel-website-thumbnail.png" alt="" class="project-img">
+                <h3><span>Title:</span> Travel site landing page</h3>
+                <p><span>Description: </span> This is just a landing page for a website that was built for practicing and
+                    understanding design.The ui will not work.</p>
+        
+                <button><a href="https://main--loquacious-tartufo-97001b.netlify.app/">View the site</a></button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about-container">
+        <img src="./images/me.jpg" alt="image of me">
+        <h1>Satyadeep Gohil</h1>
+        <p>I am an Intermediate Frontend Developer with over one year of hands-on experience in creating precise, responsive
+            web
+            pages and dynamic web applications. My expertise lies in developing clean, efficient code and delivering
+            engaging
+            user experiences.</p>
+        <h2>Core Skills</h2>
+        <ul>
+            <li>HTML5 - Semantics and Accessibility</li>
+            <li>CSS3 - Flexbox, Grid, and Responsive Design</li>
+            <li>Sass - Modular and Scalable CSS</li>
+            <li>JavaScript - ES6+, DOM Manipulation, and Event Handling</li>
+            <li>Git - Version Control and Collaboration</li>
+            <li>GitHub - Code Hosting and Project Management</li>
+        </ul>
+    
+    </section>
+
+    <form action="https://formspree.io/f/mvgpewvq" method="post">
+    
+        <div class="form-div">
+            Name: <input type="text" name="name" required placeholder="Julia Thompson">
+            <span class="error-message"></span>
+        </div>
+    
+        <div>
+            Email: <input type="email" name="email" placeholder="julia@gmail.com">
+            <span class="error-message"></span>
+        </div>
+    
+        <div>
+            Subject: <input type="text" name="subject" required placeholder="Meeting for Frontend">
+            <span class="error-message"></span>
+        </div>
+    
+        <div>
+            Message: <textarea name="message" id="message" cols="20" rows="20" placeholder="Hi,
+    
+    I’m interested in discussing your frontend needs and how we can move forward. Are you available for a meeting this week to go over the details?
+    
+    Let me know a time that works for you."></textarea>
+    <span class="error-message"></span>
+        </div>
+    
+        <button type="submit">Send</button>
+    </form>
+
+    <button id="back-to-top">
+        <a href="#top"><img src="images/up-arrow.png" alt="up arrow"></a>
+    </button>
+
+    <script src="main.js"></script>
 </body>
 </html>
