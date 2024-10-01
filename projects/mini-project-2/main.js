@@ -71,3 +71,16 @@ form.addEventListener('submit', () => {
  })
 
 realTimeValidation();
+
+function toggleMenu() {
+    const header = document.querySelector('header');
+    const menu = document.getElementById('burger-menu');
+    menu.classList.toggle('active');
+
+    if ( header.style.left === '0px') {
+         header.style.left = '-300px'
+    } else {
+         header.style.left = '0px'
+         
+    }
+}

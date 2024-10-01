@@ -43,12 +43,10 @@ header {
             a {
                 text-decoration: none;
                 color: inherit;
-                transition: all ease 0.2s;
             }
 
             a:hover {
                 cursor: pointer;
-                font-size: larger;
             }
 
             a:visited {
@@ -63,49 +61,56 @@ main {
     padding: 50px;
 }
 
-.welcome-message h1 {
-    font-size: 3rem;
-    color: #333;
-    opacity: 0;
-    transform: scale(0.5) rotate(-20deg) translateY(100px);
-    animation: advancedEntrance 2.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+
+#welcome-message {
+    h1 {
+        animation: slideInLeft 1s ease-out;
+    }
+
+    p {
+        animation: slideInRight 1.3s ease-out;
+    }
 }
 
-.welcome-message p {
-    font-size: 1.2rem;
-    margin-top: 20px;
-    opacity: 0;
-    animation: fadeInUp 3s ease-in-out 1s forwards;
-}
-
-@keyframes advancedEntrance {
+@keyframes slideInLeft {
     0% {
+        transform: translateX(-100%);
         opacity: 0;
-        transform: scale(0.5) rotate(-20deg) translateY(100px);
     }
-    50% {
-        opacity: 0.5;
-        transform: scale(1.1) rotate(10deg) translateY(-10px);
-    }
+
     100% {
+        transform: translateX(0);
         opacity: 1;
-        transform: scale(1) rotate(0deg) translateY(0);
     }
 }
 
-@keyframes fadeInUp {
-    0% {
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
         opacity: 0;
-        transform: translateY(50px);
     }
-    100% {
+
+    to {
+        transform: translateX(0);
         opacity: 1;
-        transform: translateY(0);
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
     }
 }
 
 #project-showcase {
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
@@ -119,7 +124,7 @@ main {
     width: 90%;
     height: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
@@ -130,28 +135,20 @@ main {
         align-items: center;
         flex-direction: column;
         gap: 20px;
+        margin: 10px;
         width: 400px;
         height: 500px;
         padding: 20px;
         border: 1px solid white;
+        animation: scaleUp 1s ease-in;
 
         img {
             width: 100%;
         }
 
         h3 span,
-        p span,
-        ul span {
+        p span {
             color: #FE5F55;
-        }
-
-        ul {
-            align-self: flex-start;
-        }
-
-        ul li {
-            margin-left: 40px;
-            margin-top: 10px;
         }
 
         button {
@@ -178,11 +175,11 @@ main {
     flex-direction: column;
     margin: 50px;
     padding: 20px;
-    font-size: 1.5rem;
+    font-size: 1rem;
 
     img {
-        width: 400px;
-        height: 400px;
+        width: 300px;
+        height: 300px;
         object-fit: contain;
         border-radius: 50%;
         align-self: center;
@@ -190,6 +187,7 @@ main {
 
     li {
         margin-bottom: 10px;
+        margin-left: 20px;
     }
 }
 
@@ -256,7 +254,7 @@ form {
     border: none;
     transition: all ease 0.2s;
 
-    img {
+    a img {
         width: 100px;
         height: 100px;
     }
@@ -271,3 +269,5 @@ form {
     background-color: #50FFB1;
     filter: brightness(2);
 }
+
+@import './layout';

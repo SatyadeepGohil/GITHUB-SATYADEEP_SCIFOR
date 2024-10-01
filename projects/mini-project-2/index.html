@@ -8,7 +8,7 @@
 
 </head>
 <body>
-    <header id="top">
+    <header>
         <nav>
             <li><a href="#welcome-message">Home</a></li>
             <li><a href="#project-showcase">Projects</a></li>
@@ -23,6 +23,12 @@
             </p>
         </section>
     </main>
+
+    <div id="burger-menu" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
 
     <section id="project-showcase">
         <h1 id="project-heading">Projects Showcase</h1>
@@ -108,7 +114,7 @@
     </form>
 
     <button id="back-to-top">
-        <a href="#top"><img src="images/up-arrow.png" alt="up arrow"></a>
+        <a href="#welcome-message"><img src="images/up-arrow.png" alt="up arrow"></a>
     </button>
 
     <script src="main.js"></script>
