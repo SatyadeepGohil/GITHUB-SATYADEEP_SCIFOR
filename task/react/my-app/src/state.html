@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<a href="../node_modules/"></a>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Student extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    name: 'Julia',
+                    email: 'julia@email.com',
+                    age: 20
+                };
+                this.changeName = this.changeName.bind(this);
+            }
+
+            changeName() {
+                this.setState({
+                    name: 'John',
+                    age: 30,
+                    email: 'john@email.com'
+                });
+            }
+
+            render() {
+                return (
+                    <div>
+                        <h1>Student Info</h1>
+                        <p>Name: {this.state.name}</p>
+                        <p>Email: {this.state.email}</p>
+                        <p>Age: {this.state.age}</p>
+                        <button onClick={this.changeName}>Change Name</button>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<Student />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>

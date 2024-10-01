@@ -20,5 +20,4 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(<Students /> renders the Students component)
 root.render(<Students/>);
 
-export default Students;
-
+export default Students
