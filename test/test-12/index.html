@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Name Display</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+    
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+    
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    
+        button:hover {
+            background-color: #218838;
+        }
+    
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const Input = ({ onInputChange, onButtonClick }) => {
+            return (
+                <div>
+                    <input
+                        type="text"
+                        placeholder="First Name"
+                        name="firstName"
+                        onChange={onInputChange}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Last Name"
+                        name="lastName"
+                        onChange={onInputChange}
+                    />
+                    <button onClick={onButtonClick}>Display Name</button>
+                </div>
+            )
+        }
+
+        const DisplayName = ({ firstName, lastName }) => {
+            return (
+                <p>
+                    Your Name is {firstName} {lastName}.
+                </p>
+            )
+        }
+
+        const App = () => {
+            const [firstName, setFirstName] = React.useState('');
+            const [lastName, setLastName] = React.useState('');
+            const [showName, setShowName] = React.useState(false);
+
+            const onInputChange = (e) => {
+                const { name, value } = e.target;
+
+                if (name === 'firstName') {
+                    setFirstName(value);
+                }
+                else if (name === 'lastName') {
+                    setLastName(value);
+                }
+            }
+
+            const onButtonClick = () => {
+                setShowName(true);
+            }
+
+            return (
+                <div>
+                    <h1>Enter your name</h1>
+                    <Input onInputChange={onInputChange} onButtonClick={onButtonClick} />
+                    {showName && <DisplayName firstName={firstName} lastName={lastName} />}
+                </div>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>
