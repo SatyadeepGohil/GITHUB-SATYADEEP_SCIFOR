@@ -1,23 +1,29 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Home from './components/home';
+import About from './components/about';
+import Contact from './components/contact';
 
-class Students extends React.Component {
-  // constructor is used to invoke object state in class
-  constructor() {
-    // it is used to access parent properties and methods from the child component
-    // super() is used to invoke parent class constructor
-    super();
-  }
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+          </ul>
+        </nav>
 
-  render() {
-    return (<h1>Hello guys</h1>);
-  }
-}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
 
-// Render the Students component inside the root element
-const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(<Students /> renders the Students component)
-root.render(<Students/>);
-
-export default Students
+export default App;
