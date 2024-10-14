@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React useContext Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="useContext"></div>
+
+    <script type="text/babel">
+        const { createContext, useContext } = React;
+
+        const MyContext = createContext();
+
+        function Dis() {
+            const value = useContext(MyContext);
+            return <div>{value}</div>;
+        }
+
+        function App() {
+            return (
+                <MyContext.Provider value="hello good evening">
+                    <Dis />
+                </MyContext.Provider>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById("useContext"));
+    </script>
+</body>
+
+</html>
