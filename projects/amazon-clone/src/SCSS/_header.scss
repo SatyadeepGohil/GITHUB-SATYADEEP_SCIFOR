@@ -1,0 +1,117 @@
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    #nav-logo {
+        width: 50px;
+        height: 20px;
+        margin-left: 5px;
+    }
+
+    #location-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: blue;
+        width: 150px;
+        padding: 5px;
+
+        #location-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+    }
+
+    #nav-search {
+        display: flex;
+
+        #category {
+            width: 40px;
+            background-color: red;
+        }
+
+        #search-btn {
+            img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    #nav-customer {
+        #lang {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: green;
+                height: 30px;
+        
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                p {
+                    margin-left: 5px;
+                    i {
+                        font-size: 0.5rem;
+                    }
+                }
+            }
+    }
+}
+
+
+
+#language-options {
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 200px;
+    padding: 10px;
+    font-size: 0.7rem;
+    position: absolute;
+    top: 40px;
+    right: 13px;
+
+    #arrow {
+        position: absolute;
+        top: -10px;
+        right: 0px;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 10px solid #000;
+    }
+
+    label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5px 0;
+
+        input {
+            margin-right: 5px;
+        }
+
+        input[type=radio] {
+            outline: 1px solid blue;
+            outline-offset: 2px;
+            border-radius: 50%;
+            accent-color: orange;
+        }
+
+        input[type=radio]:hover {
+            accent-color: orange;
+        }
+    }
+
+    a {
+        margin: 10px 0;
+    }
+}
