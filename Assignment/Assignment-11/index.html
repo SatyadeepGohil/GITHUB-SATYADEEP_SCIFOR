@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        div {
+            background-color: cyan;
+            font-size: 3rem;
+            padding: 10px;
+            text-align: center;
+        }
+
+        button {
+            font-size: 2rem;
+            margin: 5px;
+        }
+
+        button:active {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        function Counter() {
+            const [count, setCount] = useState(0);
+
+            return (
+                <div>
+                    <h1>Counter: {count}</h1>
+                    <button onClick={() => setCount(count + 1)}>Increament</button>
+                    <button onClick={() => setCount(count - 1)}>Decreament</button>
+                    <button onClick={() => setCount(0)}>Reset</button>
+                </div>
+            )
+        }
+
+        ReactDOM.render(<Counter/>, document.getElementById('root'));
+
+    </script>
+</body>
+</html>
