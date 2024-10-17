@@ -30,49 +30,54 @@ function Header() {
                     <div id="lang">
                             <img src="/images/india.png" alt="indian flag" />
                             <p>En <i>&#x25BC;</i></p>
+                            <span id="arrow"></span>
+
+                            <div id="language-options">
+                                <label>
+                                <input type="radio" value="EN" name="language"/> 
+                                <a href="#" className="language-links">English-EN</a>
+                                </label>
+                                <label>
+                                    <input type="radio" value="HI" name="language"/>
+                                        <a href="#"  className="language-links">हिन्दी-HI</a>
+                                </label>
+                                <label>
+                                    <input type="radio" value="TA" name="language"/>
+                                        <a href="#"  className="language-links"> தமிழ்-TA</a>
+                                </label>
+                                <label>
+                                    <input type="radio" value="TE" name="language"/>
+                                        <a href="#"  className="language-links">తెలుగు-TE</a>
+                                </label>
+                                <label>
+                                    <input type="radio" value="KN" name="language"/>
+                                        <a href="#"  className="language-links">ಕನ್ನಡ-KN</a>
+                                </label>
+                                <label>
+                                    <input type="radio" value="ML" name="language"/> 
+                                        <a href="#"  className="language-links">മലയാളം-ML</a>
+                                </label>
+                                <label>
+                                    <input type="radio" value="BN" name="language"/> 
+                                        <a href="#"  className="language-links">বাংলা-BN</a>
+                                </label>
+                                <label>
+                                    <input type="radio" value="MR" name="language"/> 
+                                        <a href="#"  className="language-links">मराठी-MR</a>
+                                </label>
+
+                                <a href="#" id="learn-more">Learn More</a>
+                                You are shpping on Amazon.in
+                                <a href="#" id="change-country">Change Country or region</a>
+                            </div>
+                    </div>
+
+                    <div id="account">
+                        <p>Hello, John</p>
+                        <p>Account & Lists <i>&#x25BC;</i></p>
                     </div>
                 </div>
         </header>
-        
-        <div id="language-options">
-            <span id="arrow"></span>
-            <label>
-            <input type="radio" value="EN" name="language"/> 
-            <a href="#">English-EN</a>
-            </label>
-            <label>
-                <input type="radio" value="HI" name="language"/>
-                 <a href="#">English-EN</a>
-            </label>
-            <label>
-                <input type="radio" value="TA" name="language"/>
-                 <a href="#"> தமிழ்-TA</a>
-            </label>
-            <label>
-                <input type="radio" value="TE" name="language"/>
-                 <a href="#">తెలుగు-TE</a>
-            </label>
-            <label>
-                <input type="radio" value="KN" name="language"/>
-                 <a href="#">ಕನ್ನಡ-KN</a>
-            </label>
-            <label>
-                <input type="radio" value="ML" name="language"/> 
-                 <a href="#">മലയാളം-ML</a>
-            </label>
-            <label>
-                <input type="radio" value="BN" name="language"/> 
-                 <a href="#">বাংলা-BN</a>
-            </label>
-            <label>
-                <input type="radio" value="MR" name="language"/> 
-                 <a href="#">मराठी-MR</a>
-            </label>
-
-            <a href="#">Learn More</a>
-            You are shpping on Amazon.in
-            <a href="#">Change Country or region</a>
-        </div>
         </>
     )
 }
