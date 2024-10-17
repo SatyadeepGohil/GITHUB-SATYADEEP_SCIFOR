@@ -1,27 +1,54 @@
+$white-border: 1px solid white;
+$header-height: 50px;
+
 header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     background-color: #131921;
+    color: white;
 
     #nav-logo {
-        width: 50px;
+        width: 60px;
         height: 20px;
-        margin-left: 5px;
+        margin-left: 12px;
+
+        &:hover {
+            outline: $white-border;
+            outline-offset: 11px;
+        }
     }
 
     #location-text {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: blue;
         width: 120px;
         padding: 5px;
-        font-size: 0.8rem;
+        font-size: 0.6rem;
+        text-wrap: nowrap;
+
+        img {
+            align-self: flex-end;
+            margin-right: 5px;
+        }
+
+        #light-text {
+            font-weight: 100;
+        }
+
+        p {
+            font-weight: 800;
+        }
 
         #location-icon {
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
+        }
+
+        &:hover {
+            outline: $white-border;
+            outline-offset: 6px;
         }
 
     }
@@ -29,15 +56,24 @@ header {
     #nav-search {
         display: flex;
 
+        #search {
+            width: 600px;
+        }
+
         #category {
             width: 40px;
             background-color: red;
+            border-radius: 5px 0 0 5px;
         }
 
         #search-btn {
+            background-color: #FEBD69;
+            padding: 10px;
+            border-radius: 0 5px 5px 0;
+            border: none;
             img {
-                width: 20px;
-                height: 20px;
+                width: 15px;
+                height: 15px;
             }
         }
     }
@@ -49,38 +85,39 @@ header {
         #lang {
                 display: flex;
                 justify-content: center;
-                align-items: center;
-                background-color: green;
-                height: 30px;
+                align-items: flex-end;
+                height: 50px;
                 position: relative;
-                padding: 5px;
+                padding: 10px;
         
                 img {
-                    width: 10px;
-                    height: 10px;
+                    width: 12px;
+                    height: 12px;
                 }
 
                 p {
                     margin-left: 5px;
-                    font-size: 0.8rem;
+                    font-size: 0.7rem;
+                    text-wrap: nowrap;
                     i {
                         font-size: 0.5rem;
                     }
                 }
 
-                #arrow {
+                #arrow-head {
                     position: absolute;
-                    top: 22px;
-                    right: 4px;
+                    visibility: hidden;
+                    top: 38px;
+                    right: 9px;
                     width: 0;
                     height: 0;
-                    border-left: 5px solid transparent;
-                    border-right: 5px solid transparent;
-                    border-bottom: 10px solid #fff;
+                    border-left: 6px solid transparent;
+                    border-right: 6px solid transparent;
+                    border-bottom: 8px solid #fff;
                 }
 
                 #language-options {
-                    /* visibility: hidden; */
+                    visibility: hidden;
                     display: flex;
                     justify-content: center;
                     align-items: flex-start;
@@ -91,8 +128,8 @@ header {
                     padding: 10px;
                     font-size: 0.7rem;
                     position: absolute;
-                    top: 32px;
-                    right: -5px;
+                    top: 46px;
+                    left: -2px;
 
                     label {
                         display: flex;
@@ -113,10 +150,9 @@ header {
                             appearance: none;
                             -webkit-appearance: none;
                             font: inherit;
-                            color: currentColor;
                             width: 1.15rem;
                             height: 1.15rem;
-                            border: 0.15rem solid currentColor;
+                            border: 0.15rem solid black;
                             border-radius: 50%;
                         }
 
@@ -181,24 +217,156 @@ header {
                 &:hover {
                     border: 1px solid white;
 
-                    #language-options {
+                    #language-options, #arrow-head {
                         visibility: visible;
-                        opacity: 1;
                     }
                 }
             }
     }
 
     #account {
-        color: white;
+        padding: 10px;
+        position: relative;
+
+        #account-arrow-head {
+            position: absolute;
+            visibility: hidden;
+            top: 35px;
+            right: 9px;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 8px solid #fff;
+        }
         p {
             display: flex;
             justify-content: center;
             align-items: center;
+            font-size: .65rem;
 
             i {
                 font-size: 0.5rem;
+                margin-left: 5px;
             }
+        }
+
+        li {
+            list-style-type: none;
+
+            a {
+                text-decoration: none;
+            }
+        }
+
+        #account-manager {
+            position: absolute;
+            background-color: white;
+            top: 43px;
+            right: -30px;
+            font-size: 0.7rem;
+            visibility: hidden;
+            padding: 10px;
+            border-radius: 2px;
+
+            span {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                background-color: lightblue;
+                padding: 10px;
+                border-radius: 10px;
+                text-wrap: nowrap;
+
+                i {
+                    font-size: 0.6rem;
+                }
+                
+                a {
+                    text-decoration: none;
+                }
+                a:hover {
+                    text-decoration: underline orange;
+                }
+            }
+
+            #account-layout-wrapper {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 10px;
+                padding: 10px;
+
+                li , h4 {
+                    margin: 5px 0;
+                }
+
+                li {
+                    font-size: 0.5rem;
+                }
+
+                a:hover {
+                    text-decoration: underline orange;
+                }
+
+                #account-details {
+                    width: 30%;
+                }
+            }
+        }
+
+        &:hover {
+            border: 1px solid white;
+            #account-arrow-head, #account-manager {
+                visibility: visible;
+            }
+        }
+    }
+
+    #returns {
+        padding: 5px;
+        font-size: 0.6rem;
+        p {
+            span {
+                font-weight: 100;
+            }
+            font-weight: 700;
+        }
+
+        &:hover {
+            outline: $white-border;
+            outline-offset: 7px;
+        }
+    }
+
+    #cart {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+        position: relative;
+        img {
+            width: 40px;
+            height: 40px;
+        }
+
+        span {
+            font-size: 0.7rem;
+            align-self: flex-end;
+        }
+
+        #number-of-order {
+            position: absolute;
+            top: 5px;
+            left: 18px;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: orange;
+        }
+
+        &:hover {
+            border: $white-border;
         }
     }
 }
