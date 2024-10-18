@@ -4,112 +4,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comparison Operators</title>
+    <title>Simple Calculator</title>
     <style>
         body {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            flex-direction: column;
         }
 
-        div {
+        #calculator {
             display: flex;
+            justify-content: center;
+            align-items: center;
             flex-direction: column;
-            gap: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
         }
 
         input {
-            font-size: 2rem;
+            font-size: 1.3rem;
+            margin: 10px;
         }
 
         button {
-            font-size: 1.5rem;
-            background-color: grey;
-            border: none;
+            font-size: larger;
             padding: 10px;
-            transition: all linear 0.2s;
-        }
-
-        button:hover {
-            background-color: rgba(128, 128, 128, 0.712);
+            margin: 10px;
         }
 
         button:active {
-            transform: scale(0.9);
+            border: 2px solid grey;
+        }
+
+        button:hover {
+            background-color: black;
+            color: white;
+        }
+
+        p {
+            font-size: 1.5rem;
         }
     </style>
 </head>
 
 <body>
-    <div>
-        <input type="text" placeholder="Enter first number" id="first-number">
-        <input type="text" placeholder="Enter second number" id="second-number">
-        <button id="compare-button">Submit</button>
-        <div id="results"></div>
+    <div id="calculator">
+        <h1>Enter two numbers</h1>
+        <input type="number" id="first" placeholder="Enter your number">
+        <input type="number" id="second" placeholder="Enter your number">
+        <span>
+            <!-- Using inline onclick attributes for each button -->
+            <button onclick="calculate('+')">+</button>
+            <button onclick="calculate('-')">-</button>
+            <button onclick="calculate('*')">*</button>
+            <button onclick="calculate('/')">/</button>
+            <button onclick="calculate('%')">%</button>
+        </span>
+        <p id="answers"></p>
     </div>
 
+    <h2>Find the Square here</h2>
+    <input type="number" id="square-number" placeholder="Enter your number">
+    <button onclick="square()">Get the squared number</button>
+    <p id="square-results"></p>
+
     <script>
-        document.getElementById('compare-button').addEventListener('click', function () {
+        function calculate(operation) {
+            const num1 = parseInt(document.getElementById('first').value);
+            const num2 = parseInt(document.getElementById('second').value);
+            const answers = document.getElementById('answers');
 
-            let a = parseFloat(document.getElementById('first-number').value);
-            let b = parseFloat(document.getElementById('second-number').value);
-
-            if (isNaN(a) || isNaN(b)) {
-                alert("Please enter valid numbers.");
+            if (isNaN(num1) || isNaN(num2)) {
+                answers.textContent = "Please enter valid numbers.";
                 return;
             }
-            let results = "";
-            if (a == b) {
-                results += `a == b: true - Conclusion: a is equal to b (in value).<br>`;
-            } else {
-                results += `a == b: false - Conclusion: a is not equal to b (in value).<br>`;
+
+            let result;
+            switch (operation) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num2 !== 0 ? num1 / num2 : "Cannot divide by zero";
+                    break;
+                case '%':
+                    result = num1 % num2;
+                    break;
+                default:
+                    result = "Invalid operation";
             }
 
-            if (a === b) {
-                results += `a === b: true - Conclusion: a is strictly equal to b (in value and type).<br>`;
-            } else {
-                results += `a === b: false - Conclusion: a is not strictly equal to b (in value or type).<br>`;
+            answers.textContent = `Result: ${result}`;
+        }
+
+        function square() {
+            const number = parseInt(document.getElementById('square-number').value);
+            const squareAnswers = document.getElementById('square-results');
+
+            if (isNaN(number)) {
+                squareAnswers.textContent = "Please enter a valid number.";
+                return;
             }
 
-            if (a != b) {
-                results += `a != b: true - Conclusion: a is not equal to b (in value).<br>`;
-            } else {
-                results += `a != b: false - Conclusion: a is equal to b (in value).<br>`;
-            }
-
-            if (a !== b) {
-                results += `a !== b: true - Conclusion: a is not strictly equal to b (in value or type).<br>`;
-            } else {
-                results += `a !== b: false - Conclusion: a is strictly equal to b (in value and type).<br>`;
-            }
-
-            if (a > b) {
-                results += `a > b: true - Conclusion: a is greater than b.<br>`;
-            } else {
-                results += `a > b: false - Conclusion: a is not greater than b.<br>`;
-            }
-
-            if (a < b) {
-                results += `a < b: true - Conclusion: a is less than b.<br>`;
-            } else {
-                results += `a < b: false - Conclusion: a is not less than b.<br>`;
-            }
-
-            if (a >= b) {
-                results += `a >= b: true - Conclusion: a is greater than or equal to b.<br>`;
-            } else {
-                results += `a >= b: false - Conclusion: a is not greater than or equal to b.<br>`;
-            }
-
-            if (a <= b) {
-                results += `a <= b: true - Conclusion: a is less than or equal to b.<br>`;
-            } else {
-                results += `a <= b: false - Conclusion: a is not less than or equal to b.<br>`;
-            }
-
-            document.getElementById('results').innerHTML = results;
-        });
+            let squaredNumber = number * number;
+            squareAnswers.textContent = `Square: ${squaredNumber}`;
+        }
     </script>
 </body>
 

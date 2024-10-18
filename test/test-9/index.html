@@ -4,121 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Calculator</title>
+    <title>Document</title>
     <style>
         body {
+            text-align: center;
+        }
+
+        #container {
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
-            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
         }
 
-        #calculator {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-        }
-
-        input {
-            font-size: 1.3rem;
-            margin: 10px;
-        }
-
-        button {
-            font-size: larger;
-            padding: 10px;
-            margin: 10px;
-        }
-
-        button:active {
-            border: 2px solid grey;
-        }
-
-        button:hover {
-            background-color: black;
-            color: white;
-        }
-
-        p {
-            font-size: 1.5rem;
+        .card {
+            width: 200px;
+            height: 350px;
+            border: 1px solid black;
         }
     </style>
+    <script>
+        function recipe() {
+            fetch('https://dummyjson.com/products')
+                .then(res => res.json())
+                .then(data => {
+                    let containerHTML = '';
+                    data.products.forEach(product => {
+                        containerHTML += `<div class="card">
+                                        <h4>Brand Name: ${product.brand || product.title}<h4>
+                                        <p>Name: ${product.title}</p>
+                                        <p>Description: ${product.description}</p>
+                                        <p>Price: ${product.price}<p>
+                                     </div>`;
+                    });
+                    document.getElementById('container').innerHTML = containerHTML;
+                })
+        }
+    </script>
 </head>
 
 <body>
-    <div id="calculator">
-        <h1>Enter two numbers</h1>
-        <input type="number" id="first" placeholder="Enter your number">
-        <input type="number" id="second" placeholder="Enter your number">
-        <span>
-            <!-- Using inline onclick attributes for each button -->
-            <button onclick="calculate('+')">+</button>
-            <button onclick="calculate('-')">-</button>
-            <button onclick="calculate('*')">*</button>
-            <button onclick="calculate('/')">/</button>
-            <button onclick="calculate('%')">%</button>
-        </span>
-        <p id="answers"></p>
-    </div>
+    <h1>Welcome to our store</h1>
+    <button onclick="recipe()">Click for Products to show</button>
+    <div id="container"></div>
 
-    <h2>Find the Square here</h2>
-    <input type="number" id="square-number" placeholder="Enter your number">
-    <button onclick="square()">Get the squared number</button>
-    <p id="square-results"></p>
-
-    <script>
-        function calculate(operation) {
-            const num1 = parseInt(document.getElementById('first').value);
-            const num2 = parseInt(document.getElementById('second').value);
-            const answers = document.getElementById('answers');
-
-            if (isNaN(num1) || isNaN(num2)) {
-                answers.textContent = "Please enter valid numbers.";
-                return;
-            }
-
-            let result;
-            switch (operation) {
-                case '+':
-                    result = num1 + num2;
-                    break;
-                case '-':
-                    result = num1 - num2;
-                    break;
-                case '*':
-                    result = num1 * num2;
-                    break;
-                case '/':
-                    result = num2 !== 0 ? num1 / num2 : "Cannot divide by zero";
-                    break;
-                case '%':
-                    result = num1 % num2;
-                    break;
-                default:
-                    result = "Invalid operation";
-            }
-
-            answers.textContent = `Result: ${result}`;
-        }
-
-        function square() {
-            const number = parseInt(document.getElementById('square-number').value);
-            const squareAnswers = document.getElementById('square-results');
-
-            if (isNaN(number)) {
-                squareAnswers.textContent = "Please enter a valid number.";
-                return;
-            }
-
-            let squaredNumber = number * number;
-            squareAnswers.textContent = `Square: ${squaredNumber}`;
-        }
-    </script>
 </body>
 
 </html>
