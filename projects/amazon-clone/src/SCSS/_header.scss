@@ -1,5 +1,4 @@
 $white-border: 1px solid white;
-$header-height: 50px;
 
 header {
     display: flex;
@@ -7,6 +6,7 @@ header {
     align-items: center;
     background-color: #131921;
     color: white;
+    gap: 10px;
 
     #nav-logo {
         width: 60px;
@@ -15,7 +15,7 @@ header {
 
         &:hover {
             outline: $white-border;
-            outline-offset: 11px;
+            outline-offset: 4px;
         }
     }
 
@@ -23,9 +23,8 @@ header {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 120px;
-        padding: 5px;
-        font-size: 0.6rem;
+        padding: 3px;
+        font-size: 0.55rem;
         text-wrap: nowrap;
 
         img {
@@ -35,6 +34,8 @@ header {
 
         #light-text {
             font-weight: 100;
+            font-size: 0.5rem;
+            text-align: center;
         }
 
         p {
@@ -47,30 +48,74 @@ header {
         }
 
         &:hover {
-            outline: $white-border;
-            outline-offset: 6px;
+            border: $white-border;
         }
 
     }
 
     #nav-search {
         display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+
+        &:focus-within {
+            border: 2px solid orange;
+            border-radius: 7px;
+        }
 
         #search {
-            width: 600px;
+            flex: 1;
+            min-width: 100px;
+            max-width: 100%;
+            height: 30px;
+            padding-left: 10px;
+            border: none;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: gray;
+
+            &:focus {
+                outline: none;
+            }
         }
 
         #category {
-            width: 40px;
-            background-color: red;
+            height: 30px;
+            min-width: 50px;
+            background-color: #E6E6E6;
+            border: none;
             border-radius: 5px 0 0 5px;
+            padding: 5px 5px 5px 10px;
+            color: black;
+            cursor: pointer;
+            appearance: none;
+            font-size: 0.7rem;
+            color: grey;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23131921%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 5px;
+
+            option {
+                    white-space: nowrap;
+                }
+            
+            &:focus, &:active {
+                border: 1.5px solid orange;
+                outline: none;
+            }
         }
 
         #search-btn {
+            flex-shrink: 0;
             background-color: #FEBD69;
             padding: 10px;
             border-radius: 0 5px 5px 0;
             border: none;
+            height: 30px;
+            display: grid;
+            place-content: center;
             img {
                 width: 15px;
                 height: 15px;
@@ -82,11 +127,11 @@ header {
         display: flex;
         justify-content: center;
         align-items: center;
+
         #lang {
                 display: flex;
                 justify-content: center;
                 align-items: flex-end;
-                height: 50px;
                 position: relative;
                 padding: 10px;
         
@@ -97,18 +142,29 @@ header {
 
                 p {
                     margin-left: 5px;
-                    font-size: 0.7rem;
+                    font-size: 0.6rem;
                     text-wrap: nowrap;
                     i {
-                        font-size: 0.5rem;
+                        font-size: 0.3rem;
+                    }
+                }
+
+                #shopping {
+                    display: flex;
+                    justify-content: center;
+                    color: black;
+                    text-wrap: wrap;
+
+                    img {
+                        margin-right: 5px;
                     }
                 }
 
                 #arrow-head {
                     position: absolute;
                     visibility: hidden;
-                    top: 38px;
-                    right: 9px;
+                    top: 22px;
+                    right: 6px;
                     width: 0;
                     height: 0;
                     border-left: 6px solid transparent;
@@ -122,13 +178,13 @@ header {
                     justify-content: center;
                     align-items: flex-start;
                     flex-direction: column;
-                    width: 200px;
+                    width: 160px;
                     background-color: white;
                     border-radius: 3px;
                     padding: 10px;
                     font-size: 0.7rem;
                     position: absolute;
-                    top: 46px;
+                    top: 30px;
                     left: -2px;
 
                     label {
@@ -139,6 +195,7 @@ header {
                         margin: 5px 0;
                         font-weight: bold;
                         line-height: 1.1;
+                        font-size: 0.6rem;
 
                         input {
                             margin-right: 5px;
@@ -150,16 +207,16 @@ header {
                             appearance: none;
                             -webkit-appearance: none;
                             font: inherit;
-                            width: 1.15rem;
-                            height: 1.15rem;
-                            border: 0.15rem solid black;
+                            width: 0.8rem;
+                            height: 0.8rem;
+                            border: 1px solid black;
                             border-radius: 50%;
                         }
 
                         input[type="radio"]::before {
                             content: '';
-                            width: 0.65rem;
-                            height: 0.65rem;
+                            width: 0.4rem;
+                            height: 0.4rem;
                             border-radius: 50%;
                             transform: scale(0);
                             transition: 120ms transform ease-in-out;
@@ -225,14 +282,14 @@ header {
     }
 
     #account {
-        padding: 10px;
+        padding: 5px;
         position: relative;
 
         #account-arrow-head {
             position: absolute;
             visibility: hidden;
-            top: 35px;
-            right: 9px;
+            top: 25px;
+            right: 1px;
             width: 0;
             height: 0;
             border-left: 6px solid transparent;
@@ -243,10 +300,10 @@ header {
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: .65rem;
+            font-size: .5rem;
 
             i {
-                font-size: 0.5rem;
+                font-size: 0.3rem;
                 margin-left: 5px;
             }
         }
@@ -262,7 +319,7 @@ header {
         #account-manager {
             position: absolute;
             background-color: white;
-            top: 43px;
+            top: 32px;
             right: -30px;
             font-size: 0.7rem;
             visibility: hidden;
@@ -326,7 +383,7 @@ header {
 
     #returns {
         padding: 5px;
-        font-size: 0.6rem;
+        font-size: 0.4rem;
         p {
             span {
                 font-weight: 100;
@@ -335,8 +392,7 @@ header {
         }
 
         &:hover {
-            outline: $white-border;
-            outline-offset: 7px;
+            border: $white-border;
         }
     }
 
@@ -344,23 +400,23 @@ header {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-left: 10px;
         position: relative;
+        margin-right: 10px;
         img {
-            width: 40px;
-            height: 40px;
+            width: 25px;
+            height: 25px;
         }
 
         span {
-            font-size: 0.7rem;
+            font-size: 0.4rem;
             align-self: flex-end;
         }
 
         #number-of-order {
             position: absolute;
-            top: 5px;
-            left: 18px;
-            font-size: 1.1rem;
+            top: 1px;
+            left: 10px;
+            font-size: 0.8rem;
             font-weight: 300;
             color: orange;
         }

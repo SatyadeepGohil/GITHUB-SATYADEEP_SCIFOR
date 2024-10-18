@@ -1,4 +1,5 @@
 import React from "react";
+import NavSearch from "./navsearch";
 
 function Header() {
     return (
@@ -15,25 +16,7 @@ function Header() {
                     </span>
                 </div>
 
-                <div id="nav-search">
-                    <select name="category" id="category">
-                        <option value="all">All</option>
-                        <option value="alexa-skills">Alexa Skills</option>
-                        <option value="amazon-devices">Amazon Devices</option>
-                        <option value="amazon-fashion">Amazon Fashion</option>
-                        <option value="amazon-pharmacy">Amazon Pharmacy</option>
-                        <option value="appliances">Appliances</option>
-                        <option value="apps-games">Apps & games</option>
-                        <option value="audible-audiobooks">Audible Audiobooks</option>
-                        <option value="baby">Baby</option>
-                        <option value="beauty">Beauty</option>
-                        <option value="books">Books</option>
-                    </select>
-                    <input type="text" id="search" placeholder="Search Amazon.in"/>
-                    <button id="search-btn">
-                        <img src="/images/search-icon.png" alt="search-icon" />
-                    </button>
-                </div>
+                <NavSearch />
 
                 <div id="nav-customer">
                     <div id="lang">
@@ -76,7 +59,10 @@ function Header() {
                                 </label>
 
                                 <a href="#" id="learn-more">Learn More</a>
-                                You are shpping on Amazon.in
+                                <p id="shopping">
+                                    <img src="/images/india.png" alt="" />
+                                    You are shpping on Amazon.in
+                                </p>
                                 <a href="#" id="change-country">Change Country or region</a>
                             </div>
                     </div>
