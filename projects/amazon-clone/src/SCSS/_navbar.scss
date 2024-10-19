@@ -1,0 +1,110 @@
+nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #232F3E;
+    padding: 5x;
+    font-size: 0.65rem;
+    gap: 10px;
+
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: inherit;
+        color: white;
+        border: none;
+        font-weight: 600;
+        font-size: inherit;
+        padding: 5px;
+
+        img {
+            width: 15px;
+            height: 15px;
+            margin-right: 5px;
+        }
+
+        &:hover, &:focus {
+            border: 1px solid white;
+        }
+    }
+
+    li {
+        list-style-type: none;
+        padding: 5px;
+        margin: 5px;
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        &:hover, &:focus {
+            border: 1px solid white;
+        }
+    }
+}
+
+#side-menu {
+    width: 200px;
+    height: 100vh;
+    overflow: auto;
+    transition: all ease .3s;
+
+    p {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background-color: #222F3F;
+        color: white;
+        font-weight: 800;
+        padding: 5px;
+        font-size: 0.8rem;
+        cursor: pointer;
+
+        img {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            margin: 5px;
+        }
+    }
+
+    h3 {
+        margin: 10px;
+        font-size: 0.8rem;
+    }
+
+    button {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border: none;
+        background-color: white;
+        padding: 10px;
+        font-size: 0.7rem;
+        font-weight: 400;
+
+        i {
+            margin-left: auto;
+            color: rgba(128, 128, 128, 0.6);
+            font-size: 0.8rem;
+            font-weight: 300;
+        }
+
+        &:hover {
+            background-color: rgba(128, 128, 128, 0.176);
+            cursor: pointer;
+
+            i {
+                color: black;
+            }
+        }
+    }
+
+    .show-more i{
+        margin-left: 10px;
+        font-size: 0.7rem;
+    }
+}

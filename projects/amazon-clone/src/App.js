@@ -1,13 +1,8 @@
-import Header from "./components/header";
-import Footer from "./components/footer";
-import './SCSS/main.css'
+import Home from "./Home";
 
 function App() {
   return (
-    <div className="App">
-     <Header/>
-     <Footer/>
-    </div>
+    <Home />
   );
 }
 

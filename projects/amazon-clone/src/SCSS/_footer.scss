@@ -117,9 +117,12 @@ footer {
                         }
                     }
 
+                    #arrow-head, #language-options {
+                        display: none;
+                    }
+
                 #arrow-head {
                     position: absolute;
-                    visibility: hidden;
                     top: 22px;
                     right: 6px;
                     width: 0;
@@ -131,7 +134,7 @@ footer {
 
                 &:hover {
                     #arrow-head, #language-options {
-                        visibility: visible;
+                        display: block;
                     }
                 }
             }
