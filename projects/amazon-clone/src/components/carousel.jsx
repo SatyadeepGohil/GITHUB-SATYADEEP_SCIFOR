@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Carousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,12 +21,22 @@ const Carousel = () => {
         setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
     }
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            nextSlide();
+        }, 10000)
+
+        return () => clearTimeout(timer)
+    }, [currentIndex]);
+
     return (
-        <div id="hero-carousel">
-            <button onClick={prevSlide} id="carousel-previous">&lt;</button>
-            <button onClick={nextSlide} id="carousel-next">&gt;</button>
-            <img id="carousel-img" src={images[currentIndex]} alt={`Slide ${currentIndex}`}/>
-        </div>
+       <div id="carousel-wrapper">
+             <div id="hero-carousel">
+                <button onClick={prevSlide} id="carousel-previous">&lt;</button>
+                <button onClick={nextSlide} id="carousel-next">&gt;</button>
+                <img id="carousel-img" src={images[currentIndex]} alt={`Slide ${currentIndex}`}/>
+            </div>
+       </div>
     )
 }
 
