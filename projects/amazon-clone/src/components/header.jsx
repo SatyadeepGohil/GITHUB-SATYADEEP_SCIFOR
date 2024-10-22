@@ -6,7 +6,6 @@ function Header() {
         <>
             <header>
                 <img src="/images/amazon.svg" alt="amazon-logo" id="nav-logo"/>
-            {/* later add a location functionalityand a location image here */}
 
                 <div id="location-text">
                     <img src="/images/location.png" alt="location-icon" id="location-icon"/>

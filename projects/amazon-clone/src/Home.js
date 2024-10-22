@@ -1,7 +1,9 @@
+import { BrowserRouter as Router } from "react-router-dom";
+
 import Header from "./components/header";
 import NavBar from "./components/navbar";
+import Carousel from "./components/carousel";
 import Footer from "./components/footer";
-import { BrowserRouter as Router } from "react-router-dom";
 import './SCSS/main.css';
 
 function Home() {
@@ -11,6 +13,7 @@ function Home() {
       <Router>
         <NavBar />
       </Router>
+      <Carousel />
     <Footer />
     </>
   );

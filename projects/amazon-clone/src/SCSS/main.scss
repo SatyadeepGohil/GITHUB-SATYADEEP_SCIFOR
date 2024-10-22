@@ -6,8 +6,16 @@
 
 body {
     font-family: "Amazon Ember Regular", sans-serif;
+    font-weight: normal;
+}
+
+#root {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 @import './header';
 @import './navbar';
+@import './carousel';
 @import './footer';

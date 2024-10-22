@@ -21,9 +21,9 @@ function NavBar() {
 
     const toggleSubMenu = (menu) => {
         if (activeSubMenu === menu) {
-            setActiveSubMenu(null); // Close the submenu if it's already open
+            setActiveSubMenu(null);
         } else {
-            setActiveSubMenu(menu); // Open the selected submenu
+            setActiveSubMenu(menu);
         }
     };
 
