@@ -1,6 +1,6 @@
 #products-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     width: 80%;
@@ -25,6 +25,7 @@
         img {
             width: 100%;
             height: 220px;
+            object-fit: contain;
         }
 
         a {
@@ -54,5 +55,102 @@
             }
         }
        }
+    }
+
+    #flight-booking {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        background-color: white;
+        width: 100%;
+        border-radius: 4px;
+
+        img {
+            width: 80%;
+            height: 220px;
+        }
+    }
+
+    #category-carousel, #product-carousel {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+
+        span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 5px;
+            padding: 5px;
+            h1 {
+                font-size: 0.8rem;
+            }
+
+            a {
+                color: #007185;
+                font-size: 0.5rem;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                    color: orange;
+                }
+            }
+        }
+
+        #category-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            overflow: hidden;
+            cursor: pointer;
+
+            div {
+                width: 150px;
+                margin: 5px;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        #category-carousel-previous {
+            position: absolute;
+            top: 30%;
+            left: 0;
+            height: 50%;
+            width: 25px;
+            font-size: 1.2rem;
+            visibility: hidden;
+        }
+
+        #category-carousel-next {
+            position: absolute;
+            top: 30%;
+            right: 0;
+            height: 50%;
+            width: 25px;
+            font-size: 1.2rem;
+            visibility: hidden;
+        }
+
+        &:hover {
+            #category-carousel-next, #category-carousel-previous {
+                visibility: visible;
+
+                &:active,
+                    &:focus {
+                        border: 2px solid blue;
+                    }
+            }
+        }
     }
 }

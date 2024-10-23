@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
     return (
@@ -48,7 +49,9 @@ function Footer() {
             <hr />
 
             <div id="bottom-language-select">
+                <Link to='/home.js'>
                 <img src="/images/bottom-logo.svg" alt="amazon-logo" id="bottom-logo"/>
+                </Link>
 
                     <div id="bottom-lang">
                         <img src="/images/globe.png" alt="globe" id="globe"/>

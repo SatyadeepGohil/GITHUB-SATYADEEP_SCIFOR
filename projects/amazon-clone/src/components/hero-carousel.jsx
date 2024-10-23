@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Carousel = () => {
+const HeroCarousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const images = [
@@ -30,7 +30,7 @@ const Carousel = () => {
     }, [currentIndex]);
 
     return (
-       <div id="carousel-wrapper">
+       <div id="hero-carousel-wrapper">
              <div id="hero-carousel">
                 <button onClick={prevSlide} id="carousel-previous">&lt;</button>
                 <button onClick={nextSlide} id="carousel-next">&gt;</button>
@@ -40,4 +40,4 @@ const Carousel = () => {
     )
 }
 
-export default Carousel;
+export default HeroCarousel;

@@ -1,7 +1,148 @@
-import React from "react"
+import { useEffect, useState, useRef } from "react";
+
+const useCarousel = (items, itemsToShow) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [itemWidth, setItemWidth] = useState(0);
+    const itemRef = useRef(null);
+
+    useEffect(() => {
+        if (itemRef.current) {
+            setItemWidth(itemRef.current.offsetWidth);
+        }
+
+        // Handle resizing
+        const handleResize = () => {
+            if (itemRef.current) {
+                setItemWidth(itemRef.current.offsetWidth);
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    const nextSlide = () => {
+        setCurrentIndex((prevIndex) => {
+            const nextIndex = prevIndex + itemsToShow;
+            return nextIndex >= items.length ? prevIndex : nextIndex;
+        });
+    };
+
+    const prevSlide = () => {
+        setCurrentIndex((prevIndex) => {
+            const nextIndex = prevIndex - itemsToShow;
+            return nextIndex < 0 ? 0 : nextIndex;
+        });
+    };
+
+    return {
+        currentIndex,
+        nextSlide,
+        prevSlide,
+        isFirstSlide: currentIndex === 0,
+        isLastSlide: currentIndex >= items.length - itemsToShow,
+        itemRef,
+        itemWidth,
+    };
+};
+
+const CategoryCarousel = () => {
+    const categoryImages = [
+        "/images/category-1.jpg",
+        "/images/category-2.jpg",
+        "/images/category-3.jpg",
+        "/images/category-4.jpg",
+        "/images/category-5.jpg",
+        "/images/category-6.jpg",
+        "/images/category-7.jpg",
+        "/images/category-8.jpg",
+        "/images/category-9.png"
+    ];
+
+    const ItemsToShow = 3;
+    const { currentIndex, nextSlide, prevSlide, isFirstSlide, isLastSlide, itemRef, itemWidth } = useCarousel(categoryImages, ItemsToShow);
+
+    return (
+        <div id="category-carousel">
+            <span>
+                <h1>Shop deals in top categories</h1>
+                <a href="#">Explore all categories</a>
+            </span>
+
+            <div
+                id="category-image-container"
+                style={{
+                    transition: "transform 0.3s ease",
+                    transform: `translateX(-${currentIndex * itemWidth}px)`
+                }}
+            >
+                {categoryImages.map((categoryImage, index) => (
+                    <div key={index} ref={index === 0 ? itemRef : null}>
+                         <img src={categoryImage} alt={`Category ${index + 1}`}
+                    />
+                    </div>
+                ))}
+            </div>
+
+            <button onClick={prevSlide} disabled={isFirstSlide} id="category-carousel-previous">&lt;</button>
+            <button onClick={nextSlide} disabled={isLastSlide} id="category-carousel-next">&gt;</button>
+        </div>
+    );
+};
+
+const ProductCarousel = () => {
+    const productImages = [
+        "/images/product-carousel-1.jpg",
+        "/images/product-carousel-2.jpg",
+        "/images/product-carousel-3.jpg",
+        "/images/product-carousel-4.jpg",
+        "/images/product-carousel-5.jpg",
+        "/images/product-carousel-6.jpg",
+        "/images/product-carousel-7.jpg",
+        "/images/product-carousel-8.jpg",
+        "/images/product-carousel-9.jpg",
+        "/images/product-carousel-10.jpg",
+        "/images/product-carousel-11.jpg",
+        "/images/product-carousel-12.jpg",
+        "/images/product-carousel-13.jpg",
+        "/images/product-carousel-14.jpg",
+        "/images/product-carousel-15.jpg",
+    ];
+
+    const ItemsToShow = 3;
+    const { currentIndex, nextSlide, prevSlide, isFirstSlide, isLastSlide, itemRef, itemWidth } = useCarousel(productImages, ItemsToShow);
+
+    return (
+        <div id="product-carousel">
+            <span>
+                <h1>Minimum 50% off | Home,kitchen & outdoors</h1>
+                <a href="#">See all offers</a>
+            </span>
+
+            <div
+                id="category-image-container"
+                style={{
+                    transition: "transform 0.3s ease",
+                    transform: `translateX(-${currentIndex * itemWidth}px)`
+                }}
+            >
+                {productImages.map((productImage, index) => (
+                    <div key={index} ref={index === 0 ? itemRef : null}>
+                         <img src={productImage} alt={`product ${index + 1}`}
+                    />
+                    </div>
+                ))}
+            </div>
+
+            <button onClick={prevSlide} disabled={isFirstSlide} id="category-carousel-previous">&lt;</button>
+            <button onClick={nextSlide} disabled={isLastSlide} id="category-carousel-next">&gt;</button>
+        </div>
+    );
+};
 
 
 const Products = () => {
+
     return (
         <>
             <div id="products-container">
@@ -232,19 +373,19 @@ const Products = () => {
 
                     <div>
                         <figure>
-                            <img src="public/images/PC_QC_Tile_4_186_116-min_1._SY116_CB543316013_.jpg" alt="" />
+                            <img src="/images/PC_QC_Tile_4_186_116-min_1._SY116_CB543316013_.jpg" alt="" />
                             <figcaption>Up to 40% off | Televisions</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/PC_QC_Tile_1_186_116-min_1._SY116_CB543316013_.jpg" alt="" />
+                            <img src="/images/PC_QC_Tile_1_186_116-min_1._SY116_CB543316013_.jpg" alt="" />
                             <figcaption>Up to 60% off | Remote fans</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/PC_QC_Tile_2_186_116-min_1._SY116_CB543316013_.jpg" alt="" />
+                            <img src="/images/PC_QC_Tile_2_186_116-min_1._SY116_CB543316013_.jpg" alt="" />
                             <figcaption>Up to 65% off | Kitchen appliances</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/PC_QC_Tile_3_186_116-min_1._SY116_CB543316013_.jpg" alt="" />
+                            <img src="/images/PC_QC_Tile_3_186_116-min_1._SY116_CB543316013_.jpg" alt="" />
                             <figcaption>Up to 50% off | Office furnitures</figcaption>
                         </figure>
                     </div>
@@ -252,26 +393,30 @@ const Products = () => {
                     <a href="#">See all deals</a>
                 </div>
 
-                <img id="flight-booking" src="/images/flight-booking.jpg" alt="" />
+                <div id="flight-booking">
+                    <img src="/images/flight-booking.jpg" alt="flying plane image" />
+                </div>
+
+                <ProductCarousel />
 
                 <div className="card four-images">
                     <h1>Style & innovation from Small Business</h1>
 
                     <div>
                         <figure>
-                            <img src="public/images/Desktop_QC_1_NAM_revised_1x_Decor._SY116_CB562451660_.jpg" alt="" />
+                            <img src="/images/Desktop_QC_1_NAM_revised_1x_Decor._SY116_CB562451660_.jpg" alt="" />
                             <figcaption>Up to 55% off | Home decor</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/Desktop_QC_1_NAM_revised_1x_Fashion_Accessories._SY116_CB562451660_.jpg" alt="" />
+                            <img src="/images/Desktop_QC_1_NAM_revised_1x_Fashion_Accessories._SY116_CB562451660_.jpg" alt="" />
                             <figcaption>Up to 75% off | Fashion accessories</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/Desktop_QC_1_NAM_revised_1x_Furniture._SY116_CB562451660_.jpg" alt="" />
+                            <img src="/images/Desktop_QC_1_NAM_revised_1x_Furniture._SY116_CB562451660_.jpg" alt="" />
                             <figcaption>Up to 60% off Furniture</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/Desktop_QC_1_NAM_revised_1x_Electronics._SY116_CB562451660_.jpg" alt="" />
+                            <img src="/images/Desktop_QC_1_NAM_revised_1x_Electronics._SY116_CB562451660_.jpg" alt="" />
                             <figcaption>Up to 70% Electronics accessories</figcaption>
                         </figure>
                     </div>
@@ -284,19 +429,19 @@ const Products = () => {
 
                     <div>
                         <figure>
-                            <img src="public/images/laptops.jpg" alt="" />
+                            <img src="/images/laptops.jpg" alt="" />
                             <figcaption>Laptops</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/mobiles.jpg" alt="" />
+                            <img src="/images/mobiles.jpg" alt="" />
                             <figcaption>Mobiles</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/headphones.jpg" alt="" />
+                            <img src="/images/headphones.jpg" alt="" />
                             <figcaption>Headphones</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/home-kitchen-appliances.jpg" alt="" />
+                            <img src="/images/home-kitchen-appliances.jpg" alt="" />
                             <figcaption>Home & Kitchen</figcaption>
                         </figure>
                     </div>
@@ -309,19 +454,19 @@ const Products = () => {
 
                     <div>
                         <figure>
-                            <img src="public/images/Lamps_1.1._SY116_CB562332080_.jpg" alt="" />
+                            <img src="/images/Lamps_1.1._SY116_CB562332080_.jpg" alt="" />
                             <figcaption>Up to 55% off | Lamps & lights</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/Furniture_1.2._SY116_CB562332080_.jpg" alt="" />
+                            <img src="/images/Furniture_1.2._SY116_CB562332080_.jpg" alt="" />
                             <figcaption>Up to 70% off | Furnishing</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/Electronics_1.3._SY116_CB562332080_.jpg" alt="" />
+                            <img src="/images/Electronics_1.3._SY116_CB562332080_.jpg" alt="" />
                             <figcaption>Up to 60% off | Electronics</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/Home_1.4._SY116_CB562332080_.jpg" alt="" />
+                            <img src="/images/Home_1.4._SY116_CB562332080_.jpg" alt="" />
                             <figcaption>Up to 65% off | Home decor</figcaption>
                         </figure>
                     </div>
@@ -334,19 +479,19 @@ const Products = () => {
 
                     <div>
                         <figure>
-                            <img src="public/images/Tshirts_and_polos.jpg" alt="" />
+                            <img src="/images/Tshirts_and_polos.jpg" alt="" />
                             <figcaption>T-shirts & polos</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/Casual_shirt.jpg" alt="" />
+                            <img src="/images/Casual_shirt.jpg" alt="" />
                             <figcaption>Casuals shirts</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/Jeans.jpg" alt="" />
+                            <img src="/images/Jeans.jpg" alt="" />
                             <figcaption>Classic jeans</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/workwear-classics.jpg" alt="" />
+                            <img src="/images/workwear-classics.jpg" alt="" />
                             <figcaption>Workwear classics</figcaption>
                         </figure>
                     </div>
@@ -359,19 +504,19 @@ const Products = () => {
 
                     <div>
                         <figure>
-                            <img src="public/images/phase3_furnish_186._SY116_CB545098456_.jpg" alt="" />
+                            <img src="/images/phase3_furnish_186._SY116_CB545098456_.jpg" alt="" />
                             <figcaption>Handcrafted items from artisans</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/phase3_furniture_186._SY116_CB545097934_.jpg" alt="" />
+                            <img src="/images/phase3_furniture_186._SY116_CB545097934_.jpg" alt="" />
                             <figcaption>Items from woemen led businesses</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/phase3_decor_186._SY116_CB545098343_.jpg" alt="" />
+                            <img src="/images/phase3_decor_186._SY116_CB545098343_.jpg" alt="" />
                             <figcaption>Government emporium products</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/phase3_diya_186._SY116_CB545098676_.jpg" alt="" />
+                            <img src="/images/phase3_diya_186._SY116_CB545098676_.jpg" alt="" />
                             <figcaption>Unique finds from artisans</figcaption>
                         </figure>
                     </div>
@@ -384,19 +529,19 @@ const Products = () => {
 
                     <div>
                         <figure>
-                            <img src="public/images/Desktop_QC_2_NAM_revised_1x_Ethnic_wears._SY116_CB562451660_.jpg" alt="" />
+                            <img src="/images/Desktop_QC_2_NAM_revised_1x_Ethnic_wears._SY116_CB562451660_.jpg" alt="" />
                             <figcaption>Up to 70% off | Ethnic wears</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/Desktop_QC_2_NAM_revised_1x_lights_Lamps._SY116_CB562451660_.jpg" alt="" />
+                            <img src="/images/Desktop_QC_2_NAM_revised_1x_lights_Lamps._SY116_CB562451660_.jpg" alt="" />
                             <figcaption>Up to 60% off | Lights ^ Lamps</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/Desktop_QC_2_NAM_revised_1x_Furnishings._SY116_CB562451660_.jpg" alt="" />
+                            <img src="/images/Desktop_QC_2_NAM_revised_1x_Furnishings._SY116_CB562451660_.jpg" alt="" />
                             <figcaption>Up to 55% off | Furnishings</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/Desktop_QC_2_NAM_revised_1x_Pooja_Essentials._SY116_CB562451660_.jpg" alt="" />
+                            <img src="/images/Desktop_QC_2_NAM_revised_1x_Pooja_Essentials._SY116_CB562451660_.jpg" alt="" />
                             <figcaption>Up to 60% off | Pooja essentials</figcaption>
                         </figure>
                     </div>
@@ -406,7 +551,7 @@ const Products = () => {
 
                 <div className="card">
                     <h1>Up to 40% off | Deals on mobiles and accessories</h1>
-                    <img src="public/images/galaxy-s24-ultra.jpg" alt="" />
+                    <img src="/images/galaxy-s24-ultra.jpg" alt="" />
 
                     <a href="#">See all offers</a>
                 </div>
@@ -416,51 +561,27 @@ const Products = () => {
 
                     <div>
                         <figure>
-                            <img src="public/images/apple.jpg" alt="" />
+                            <img src="/images/apple.jpg" alt="" />
                             <figcaption>Up to 20% off</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/oneplus.jpg" alt="" />
+                            <img src="/images/oneplus.jpg" alt="" />
                             <figcaption>Savings up to ₹40,000</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/iqoo.jpg" alt="" />
+                            <img src="/images/iqoo.jpg" alt="" />
                             <figcaption>Savings up to ₹16,800</figcaption>
                         </figure>
                         <figure>
-                            <img src="public/images/realme.jpg" alt="" />
+                            <img src="/images/realme.jpg" alt="" />
                             <figcaption>Up to 35% off</figcaption>
                         </figure>
                     </div>
 
                     <a href="#">See all offers</a>
                 </div>
-
-                <div className="card four-images">
-                    <h1>Deals on smartphones that suits your budget</h1>
-
-                    <div>
-                        <figure>
-                            <img src="public/images/01._SY116_CB545215700_.jpg" alt="" />
-                            <figcaption>Budget | Under ₹10,000</figcaption>
-                        </figure>
-                        <figure>
-                            <img src="public/images/02._SY116_CB545215700_.jpg" alt="" />
-                            <figcaption>Mid range | ₹10,000-₹25,000</figcaption>
-                        </figure>
-                        <figure>
-                            <img src="public/images/03._SY116_CB545215700_.jpg" alt="" />
-                            <figcaption>Premium | ₹25,000-₹40,000</figcaption>
-                        </figure>
-                        <figure>
-                            <img src="public/images/04._SY116_CB545215700_.jpg" alt="" />
-                            <figcaption>Ultra premium | Above ₹40,000</figcaption>
-                        </figure>
-                    </div>
-
-                    <a href="#">See all offers</a>
-                </div>
-
+                
+                <CategoryCarousel/>
             </div>
         </>
     )
