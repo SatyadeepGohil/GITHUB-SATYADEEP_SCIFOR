@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 
 const NavSearch = () => {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [selectWidth, setSelectWidth] = useState(0);
+    const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
     const selectRef = useRef(null);
 
     const categories = [
@@ -80,22 +83,32 @@ const NavSearch = () => {
     setSelectedCategory(e.target.value);
   }
 
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchSumbit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+    }
+  }
+
   return (
-    
-    <div id="nav-search" >
-        <select id="category" ref={selectRef} value={selectedCategory} onChange={handleCategoryChange} style={{width: `${selectWidth}px`}}>
-            {categories.map(category => (
-                <option key={category.value} value={category.value}>
-                    {category.label}
-                </option>
-            ))}
-        </select>
-        <input type="text" placeholder="Search Amazon.in" id="search"/>
-        <button id="search-btn">
-            <img src="/images/search-icon.png" alt="search-icon"/>
-        </button>
-        <i></i>
-    </div>
+
+        <form onSubmit={handleSearchSumbit} id="nav-search">
+              <select id="category" ref={selectRef} value={selectedCategory} onChange={handleCategoryChange} style={{width: `${selectWidth}px`}}>
+              {categories.map(category => (
+                  <option key={category.value} value={category.value}>
+                      {category.label}
+                  </option>
+              ))}
+          </select>
+          <input type="text" placeholder="Search Amazon.in" id="search" value={searchQuery} onChange={handleSearchChange}/>
+          <button id="search-btn">
+              <img src="/images/search-icon.png" alt="search-icon"/>
+          </button>
+        </form>
   )
 }
 

@@ -63,14 +63,14 @@ const CategoryCarousel = () => {
     const { currentIndex, nextSlide, prevSlide, isFirstSlide, isLastSlide, itemRef, itemWidth } = useCarousel(categoryImages, ItemsToShow);
 
     return (
-        <div id="category-carousel">
+        <div className="carousel">
             <span>
                 <h1>Shop deals in top categories</h1>
                 <a href="#">Explore all categories</a>
             </span>
 
             <div
-                id="category-image-container"
+                className="carousel-image-container"
                 style={{
                     transition: "transform 0.3s ease",
                     transform: `translateX(-${currentIndex * itemWidth}px)`
@@ -84,8 +84,8 @@ const CategoryCarousel = () => {
                 ))}
             </div>
 
-            <button onClick={prevSlide} disabled={isFirstSlide} id="category-carousel-previous">&lt;</button>
-            <button onClick={nextSlide} disabled={isLastSlide} id="category-carousel-next">&gt;</button>
+            <button onClick={prevSlide} disabled={isFirstSlide} className="carousel-previous">&lt;</button>
+            <button onClick={nextSlide} disabled={isLastSlide} className="carousel-next">&gt;</button>
         </div>
     );
 };
@@ -113,14 +113,14 @@ const ProductCarousel = () => {
     const { currentIndex, nextSlide, prevSlide, isFirstSlide, isLastSlide, itemRef, itemWidth } = useCarousel(productImages, ItemsToShow);
 
     return (
-        <div id="product-carousel">
+        <div className="carousel">
             <span>
                 <h1>Minimum 50% off | Home,kitchen & outdoors</h1>
                 <a href="#">See all offers</a>
             </span>
 
             <div
-                id="category-image-container"
+                className="carousel-image-container"
                 style={{
                     transition: "transform 0.3s ease",
                     transform: `translateX(-${currentIndex * itemWidth}px)`
@@ -134,8 +134,8 @@ const ProductCarousel = () => {
                 ))}
             </div>
 
-            <button onClick={prevSlide} disabled={isFirstSlide} id="category-carousel-previous">&lt;</button>
-            <button onClick={nextSlide} disabled={isLastSlide} id="category-carousel-next">&gt;</button>
+            <button onClick={prevSlide} disabled={isFirstSlide} className="carousel-previous">&lt;</button>
+            <button onClick={nextSlide} disabled={isLastSlide} className="carousel-next">&gt;</button>
         </div>
     );
 };
