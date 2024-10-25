@@ -2,9 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Footer() {
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
     return (
         <footer>
-            <button onClick={() =>document.body.scrollTop = 0} id="back-to-top">Back to top</button>
+            <button onClick={scrollToTop} id="back-to-top">Back to top</button>
             <div id="link-container">
 
                 <div className="amazon-links">

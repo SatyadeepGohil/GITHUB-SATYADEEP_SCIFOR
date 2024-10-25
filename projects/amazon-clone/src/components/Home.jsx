@@ -6,6 +6,7 @@ import HeroCarousel from './hero-carousel';
 import Products from './products';
 import Footer from './footer';
 import SearchResults from "./SearchResults";
+import ProductDetails from "./productDetails";
 import '../SCSS/main.css';
 
 function Home() {
@@ -25,6 +26,7 @@ function Home() {
           }
          />
          <Route path="/search" element={<SearchResults />}/>
+         <Route path='/product/:id' element={<ProductDetails />}/>
       </Routes>
     </Router>
   );
