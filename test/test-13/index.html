@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consuming API</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        input {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const { useEffect, useState } = React;
+
+        function App() {
+            const [products, setProducts] = useState([]);
+            const [newProduct, setNewProduct] = useState({ title: "", price: 0 });
+
+            useEffect(() => {
+                // Fetch existing products
+                async function fetchProducts() {
+                    try {
+                        const response = await fetch("https://dummyjson.com/products");
+                        const data = await response.json();
+                        setProducts(data.products);
+                    } catch (error) {
+                        console.error("Error fetching products:", error);
+                    }
+                }
+                fetchProducts();
+            }, []);
+
+            // Create new product
+            async function addProduct() {
+                try {
+                    const response = await fetch("https://dummyjson.com/products/add", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(newProduct)
+                    });
+                    const data = await response.json();
+                    setProducts((prevProducts) => [...prevProducts, data]);
+                    setNewProduct({ title: "", price: 0 }); // Reset input fields
+                } catch (error) {
+                    console.error("Error adding product:", error);
+                }
+            }
+
+            return (
+                <div>
+                    <h1>Add a New Product</h1>
+                    <input
+                        type="text"
+                        placeholder="Product Title"
+                        value={newProduct.title}
+                        onChange={(e) => setNewProduct({ ...newProduct, title: e.target.value })}
+                    />
+                    <input
+                        type="number"
+                        placeholder="Product Price"
+                        value={newProduct.price}
+                        onChange={(e) => setNewProduct({ ...newProduct, price: Number(e.target.value) })}
+                    />
+                    <button onClick={addProduct}>Add Product</button>
+                    <h2>Products</h2>
+                    <ul>
+                        {products.map((product) => (
+                            <li key={product.id}>{product.title} - ${product.price}</li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+    </script>
+</body>
+
+</html>
