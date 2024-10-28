@@ -6,7 +6,7 @@ import Footer from "./footer";
 
 function renderStars(rating) {
   const stars = [];
-  const roundedRating = Math.round(rating * 2) / 2; // Round to nearest 0.5
+  const roundedRating = Math.round(rating * 2) / 2;
   
   for (let i = 1; i <= 5; i++) {
     if (i <= Math.floor(roundedRating)) {
@@ -225,6 +225,10 @@ function ProductDetails() {
                         <p> <strong>Item Model No:</strong> {product.sku}</p>
                         <p> <strong>Item Weight:</strong> {product.weight} g</p>
                     </div>
+                </div>
+
+                <div id="product-order-details">
+                  
                 </div>
             </div>
         )}

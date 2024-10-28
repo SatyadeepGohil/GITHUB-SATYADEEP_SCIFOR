@@ -1,7 +1,40 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { useCart } from './cartContext';
 import NavSearch from "./navsearch";
 
 function Header() {
+    const cityNameRef = useRef(null);
+    const { getTotalItemCount } = useCart();
+
+    useEffect(() => {
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                let lat = position.coords.latitude;
+                let long = position.coords.longitude;
+
+                console.log(lat, long);
+
+                fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${long}`)
+                .then(response => response.json())
+                .then(data => {
+                     console.log(data)
+                    const address = data.address || {};
+                    const city = address.state_district || address.city || address.town || address.village || address.county || address.locatlity || 'City not found';
+                    const postalCode = address.postcode || 'Pincode not found';
+
+                    if (cityNameRef.current) {
+                        cityNameRef.current.innerText = `${city} ${postalCode}`;
+                    }
+                }).catch(error => console.error('Error fetching city:', error))
+            });
+        }
+    }
+
+    getLocation();
+
+}, [])
+
     return (
         <>
             <header>
@@ -10,8 +43,8 @@ function Header() {
                 <div id="location-text">
                     <img src="/images/location.png" alt="location-icon" id="location-icon"/>
                     <span>
-                        <p id="light-text">Deliver to John</p>
-                        <p>Las vegas 361005</p>
+                        <p id="light-text">Deliver to Sharma</p>
+                        <p ref={cityNameRef}>Las vegas 361005</p>
                     </span>
                 </div>
 
@@ -115,7 +148,7 @@ function Header() {
                     <div id="cart">
                         <img src="/images/cart.svg" alt="shopping cart"/>
                         <span>cart</span>
-                    <p id="number-of-order">0</p>
+                    <p id="number-of-order">{getTotalItemCount()}</p>
                     </div>
 
                 </div>

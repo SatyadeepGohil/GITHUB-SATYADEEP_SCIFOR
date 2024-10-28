@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Header from './header';
 import NavBar from './navbar';
 import Footer from './footer';
+import { useCart } from "./cartContext";
 import '../SCSS/main.css';
 import { useState } from "react";
 
@@ -85,6 +86,7 @@ function SearchResults() {
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { cartItems, addToCart, removeFromCart, getItemCountById } = useCart();
 
     useEffect(() => {
       const fetchData = async () => {
@@ -110,6 +112,8 @@ function SearchResults() {
     }, [query]);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
+
+    const isInCart = (itemId) => cartItems.some(item => item.id === itemId);
 
     return (
         <>
@@ -149,7 +153,11 @@ function SearchResults() {
                                     </p>
                                   </div>
                                   <p>{item.shippingInformation}</p>
-                                  <button>Add to cart</button>
+                                  <button onClick={() => addToCart(item)}>Add to cart</button>
+                                  {isInCart(item.id) ? (
+                                    <button onClick={() => removeFromCart(item.id)}>Remove</button>
+                                  ) : null}
+                                  <p>{getItemCountById(item.id)}</p>
                                 </div>
                           </div>
                       ))

@@ -50,7 +50,7 @@ header {
         }
 
         &:hover {
-            border: $white-border;
+            outline: $white-border;
         }
 
     }
@@ -418,9 +418,9 @@ header {
 
         #number-of-order {
             position: absolute;
-            top: 1px;
-            left: 10px;
-            font-size: 0.8rem;
+            top: 10%;
+            left: 30%;
+            font-size: 0.52rem;
             font-weight: 300;
             color: orange;
         }
