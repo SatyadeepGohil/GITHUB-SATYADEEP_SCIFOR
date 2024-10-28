@@ -1,50 +1,22 @@
-import React, { useEffect, useRef } from "react";
 import { useCart } from './cartContext';
+import { Link } from 'react-router-dom'
 import NavSearch from "./navsearch";
 
-function Header() {
-    const cityNameRef = useRef(null);
+function Header({ location }) {
     const { getTotalItemCount } = useCart();
-
-    useEffect(() => {
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(position => {
-                let lat = position.coords.latitude;
-                let long = position.coords.longitude;
-
-                console.log(lat, long);
-
-                fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${long}`)
-                .then(response => response.json())
-                .then(data => {
-                     console.log(data)
-                    const address = data.address || {};
-                    const city = address.state_district || address.city || address.town || address.village || address.county || address.locatlity || 'City not found';
-                    const postalCode = address.postcode || 'Pincode not found';
-
-                    if (cityNameRef.current) {
-                        cityNameRef.current.innerText = `${city} ${postalCode}`;
-                    }
-                }).catch(error => console.error('Error fetching city:', error))
-            });
-        }
-    }
-
-    getLocation();
-
-}, [])
 
     return (
         <>
             <header>
-                <img src="/images/amazon.svg" alt="amazon-logo" id="nav-logo"/>
+                <Link to="/">
+                    <img src="/images/amazon.svg" alt="amazon-logo" id="nav-logo"/>
+                </Link>
 
                 <div id="location-text">
                     <img src="/images/location.png" alt="location-icon" id="location-icon"/>
                     <span>
                         <p id="light-text">Deliver to Sharma</p>
-                        <p ref={cityNameRef}>Las vegas 361005</p>
+                        <p>{location}</p>
                     </span>
                 </div>
 
@@ -145,11 +117,13 @@ function Header() {
                     <div id="returns">
                         <p> <span>Returns</span> <br/> & Orders</p>
                     </div>
-                    <div id="cart">
-                        <img src="/images/cart.svg" alt="shopping cart"/>
-                        <span>cart</span>
-                    <p id="number-of-order">{getTotalItemCount()}</p>
-                    </div>
+                    <Link to="/cart">
+                        <div id="cart">
+                            <img src="/images/cart.svg" alt="shopping cart"/>
+                            <span>cart</span>
+                            <p id="number-of-order">{getTotalItemCount()}</p>
+                        </div>
+                    </Link>
 
                 </div>
         </header>

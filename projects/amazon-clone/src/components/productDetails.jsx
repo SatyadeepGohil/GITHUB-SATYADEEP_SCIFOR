@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useCart } from "./cartContext";
 import Header from "./header";
 import NavBar from "./navbar";
 import Footer from "./footer";
@@ -69,7 +70,7 @@ function renderStars(rating) {
   );
 }
 
-function ProductDetails() {
+function ProductDetails({ location }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -77,6 +78,7 @@ function ProductDetails() {
     const [hoveredImage, setHoveredImage] = useState('');
     const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
     const [isZoomed, setIsZoomed] = useState(false);
+    const { addToCart } = useCart();
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -103,7 +105,7 @@ function ProductDetails() {
         const mouseX = ((e.clientX - left) / width) * 100;
         const mouseY = ((e.clientY - top) / height) * 100;
 
-        const zoomBoxWidth = 40;
+        const zoomBoxWidth = 25;
         const zoomBoxHeight = 25;
         const halfZoomBoxWidth = zoomBoxWidth / 2;
         const halfZoomBoxHeight = zoomBoxHeight / 2;
@@ -149,7 +151,7 @@ function ProductDetails() {
                         <div
                             id="zoom-box"
                             style={{
-                                width: '40%',
+                                width: '25%',
                                 height: '25%',
                                 left: `${zoomPosition.x}%`,
                                 top: `${zoomPosition.y}%`
@@ -163,14 +165,14 @@ function ProductDetails() {
                     <div id="product-image-zoom">
                         <img src={hoveredImage} alt={`${product.title} zoomed`} 
                         style={{
-                            transform: `scale(2) translate(-${zoomPosition.zoomX}%, -${zoomPosition.zoomY}%)`,
+                            transform: `scale(3.5) translate(-${zoomPosition.zoomX}%, -${zoomPosition.zoomY}%)`,
                             transformOrigin: 'top left'
                         }}/>
                     </div>
                 )}
 
                 <div id="product-info">
-                    <h1>{product.title}</h1>
+                    <h4>{product.title}</h4>
 
                     <div id="rating-display">
                         <p>{product.rating}</p>
@@ -179,37 +181,31 @@ function ProductDetails() {
                     </div>
 
                     <div id="discounted-price">
-                        <p>-{product.discountPercentage}%</p>
-                        <p> ₹{(product.price * (1 - product.discountPercentage / 100)).toFixed(2)}</p>
+                        <p id="discount">-{product.discountPercentage}%</p>
+                        <p> <sup>₹</sup>{(product.price * (1 - product.discountPercentage / 100)).toFixed(2)}</p>
                     </div>
-                    <p>M.R.P: <span>₹{product.price}</span></p>
+                    <p id="original-price">M.R.P: <span>₹{product.price}</span></p>
 
-                    <div>
-                        <p> <strong>Brand:</strong> {product.brand}</p>
+                    <p> <strong>Brand:</strong> {product.brand}</p>
 
-                        <hr />
+                    <hr />
 
-                        <h4>About this item</h4>
-                        <p>{product.description}</p>
+                    <div id="product-description">
+                      <h4>About this item</h4>
+                      <p>{product.description}</p>
                     </div>
-
+                  
                     <div id="customer-reviews">
                         <h4>Customer reviews</h4>
                         {product.reviews.map((review, index) => (
                             <>
                             <p> <img src="/images/user-logo.png" alt="customer-icon" /> {review.reviewerName}</p>
-                            <p>{review.rating}{renderStars(review.rating)}</p>
+                            <p>{renderStars(review.rating)} {review.comment}</p>
                             <p>{new Date(review.date).toLocaleDateString('en-US', {
                                 year: 'numeric',
                                 month: 'long',
                                 day: 'numeric'
                             })}</p>
-                            <p key={index}>{review.comment}</p>
-                            <p>0 people found this helpful</p>
-                            <div>
-                                <button>Helpul</button>
-                                <button>Report</button>
-                            </div>
                             </>
                         ))}
                     </div>
@@ -228,7 +224,43 @@ function ProductDetails() {
                 </div>
 
                 <div id="product-order-details">
-                  
+                  <p>{product.shippingInformation} on your first order free.</p>
+                  <p> Deliver to
+                    <img src="/images/black-location.png" alt="loaction-logo" />
+                    {location}
+                  </p>
+                  <p className={product.availabilityStatus === 'In Stock' ? 'in-stock' : 'low-stock'}>
+                    {product.availabilityStatus}
+                  </p>
+
+                  <div>
+                    <p>Payment <span>Secure tranaction</span></p>
+                    <p>Ships from <span>Amazon</span></p>
+                    <p>Sold by <span>{product.brand}</span></p>
+                  </div>
+
+                  <label htmlFor="select"> Quantity
+                    <select name="quantity" id="quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                  </select>
+                  </label>
+
+                  <button id="add-to-cart" onClick={() => addToCart()}>Add to cart</button>
+                  <button id="buy-now">Buy Now</button>
                 </div>
             </div>
         )}

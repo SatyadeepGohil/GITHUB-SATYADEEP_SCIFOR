@@ -56,7 +56,7 @@ function Footer() {
             <hr />
 
             <div id="bottom-language-select">
-                <Link to='/home.js'>
+                <Link to='/'>
                 <img src="/images/bottom-logo.svg" alt="amazon-logo" id="bottom-logo"/>
                 </Link>
 

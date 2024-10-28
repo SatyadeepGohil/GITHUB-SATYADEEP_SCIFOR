@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, useLocation, Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import Header from './header';
 import NavBar from './navbar';
@@ -79,9 +79,9 @@ function renderStars(rating, reviews) {
   );
 }
 
-function SearchResults() {
-    const location = useLocation();
-    const searchParams = new URLSearchParams(location.search);
+function SearchResults({ location }) {
+    const pageLocation = useLocation();
+    const searchParams = new URLSearchParams(pageLocation.search);
     const query = searchParams.get('q');
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -117,11 +117,11 @@ function SearchResults() {
 
     return (
         <>
-            <Header />
+            <Header location={location}/>
             <NavBar />
-            <div>
+            <div id="search-result-container">
                 <h1>{`${results.length} results for ${query}`}</h1>
-                <div id="search-result-container">
+                <div>
                     {results && results.length > 0 ? (
                       results.map((item, index) => (
                           <div className="search-result-card">
