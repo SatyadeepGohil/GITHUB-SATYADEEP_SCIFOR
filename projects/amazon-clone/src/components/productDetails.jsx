@@ -1,13 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useCart } from "./cartContext";
 import Header from "./header";
 import NavBar from "./navbar";
 import Footer from "./footer";
+import { useCart } from "./cartContext";
+import { useBrowsingHistory } from "./browserHistoryContext";
 
 function renderStars(rating) {
   const stars = [];
   const roundedRating = Math.round(rating * 2) / 2;
+  const { addToBrowsingHistory } = BrowsingHistoryProvider;
   
   for (let i = 1; i <= 5; i++) {
     if (i <= Math.floor(roundedRating)) {
@@ -79,6 +81,7 @@ function ProductDetails({ location }) {
     const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
     const [isZoomed, setIsZoomed] = useState(false);
     const { addToCart } = useCart();
+    const { addToBrowsingHistory } = useBrowsingHistory();
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -88,6 +91,8 @@ function ProductDetails({ location }) {
                 const data = await response.json();
                 setProduct(data);
                 setHoveredImage(data.images[0]);
+
+                addToBrowsingHistory(data);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -96,7 +101,7 @@ function ProductDetails({ location }) {
         };
 
         fetchProduct();
-    }, [id]);
+    }, [id, addToBrowsingHistory]);
 
     const handleMouseMove = (e) => {
         if (!isZoomed) return;
@@ -259,7 +264,7 @@ function ProductDetails({ location }) {
                   </select>
                   </label>
 
-                  <button id="add-to-cart" onClick={() => addToCart()}>Add to cart</button>
+                  <button id="add-to-cart" onClick={() => addToCart(product)}>Add to cart</button>
                   <button id="buy-now">Buy Now</button>
                 </div>
             </div>

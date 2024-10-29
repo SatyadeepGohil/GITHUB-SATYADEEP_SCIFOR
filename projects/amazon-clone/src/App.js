@@ -5,6 +5,7 @@ import SearchResults from "./components/SearchResults";
 import ProductDetails from "./components/productDetails";
 import { CartProvider } from "./components/cartContext";
 import Cart from './components/cart';
+import { BrowsingHistoryProvider } from "./components/browserHistoryContext";
 
 function App() {
   const [location, setLocation] = useState('Loading...');
@@ -34,14 +35,16 @@ function App() {
 }, [])
 
   return (
-    <CartProvider>
-      <Routes>
-        <Route path="/" element={<Home location={location}/>}/>
-        <Route path="/search" element={<SearchResults location={location}/>}/>
-        <Route path="/product/:id" element={<ProductDetails location={location}/>}/>
-        <Route path="/cart" element={<Cart location={location}/>} />
-      </Routes>
-    </CartProvider>
+    <BrowsingHistoryProvider>
+      <CartProvider>
+        <Routes>
+          <Route path="/" element={<Home location={location}/>}/>
+          <Route path="/search" element={<SearchResults location={location}/>}/>
+          <Route path="/product/:id" element={<ProductDetails location={location}/>}/>
+          <Route path="/cart" element={<Cart location={location}/>} />
+        </Routes>
+      </CartProvider>
+    </BrowsingHistoryProvider>
   );
 }
 
