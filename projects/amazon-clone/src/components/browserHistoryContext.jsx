@@ -8,7 +8,7 @@ export const BrowsingHistoryProvider = ({ children }) => {
     const addToBrowsingHistory = (product) => {
         setBrowsingHistory(prevHistory => {
             
-            const filteredHistory = prevHistory.filter(item => item.id == product.id)
+            const filteredHistory = prevHistory.filter(item => item.id !== product.id)
 
             return [
                 {

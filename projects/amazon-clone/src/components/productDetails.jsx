@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header from "./header";
 import NavBar from "./navbar";
 import Footer from "./footer";
@@ -9,7 +9,6 @@ import { useBrowsingHistory } from "./browserHistoryContext";
 function renderStars(rating) {
   const stars = [];
   const roundedRating = Math.round(rating * 2) / 2;
-  const { addToBrowsingHistory } = BrowsingHistoryProvider;
   
   for (let i = 1; i <= 5; i++) {
     if (i <= Math.floor(roundedRating)) {
@@ -80,8 +79,10 @@ function ProductDetails({ location }) {
     const [hoveredImage, setHoveredImage] = useState('');
     const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
     const [isZoomed, setIsZoomed] = useState(false);
-    const { addToCart } = useCart();
     const { addToBrowsingHistory } = useBrowsingHistory();
+    const [selectedQuantity, setSelectedQuantity] = useState(1);
+    const mainImageRef = useRef(null);
+    const {addToCart} = useCart();
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -90,9 +91,13 @@ function ProductDetails({ location }) {
                 if (!response.ok) { throw new Error('Failed to fetch product details')};
                 const data = await response.json();
                 setProduct(data);
-                setHoveredImage(data.images[0]);
+
+                if (!hoveredImage && data.images?.length > 0) {
+                  setHoveredImage(data.images[0]);
+                }
 
                 addToBrowsingHistory(data);
+
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -101,36 +106,47 @@ function ProductDetails({ location }) {
         };
 
         fetchProduct();
-    }, [id, addToBrowsingHistory]);
+    }, [id, addToBrowsingHistory, hoveredImage]);
+
+    const handleThumbnailHover = (image) => {
+      if (image !== hoveredImage) {
+        setHoveredImage(image);
+        setZoomPosition({ x: 0, y: 0})
+      }
+    }
+
+    const handleQuantityChange = (e) => {
+      setSelectedQuantity(parseInt(e.target.value, 10));
+    };
+
+    const handleAddToCart = () => {
+      addToCart(product, selectedQuantity)
+    }
 
     const handleMouseMove = (e) => {
-        if (!isZoomed) return;
+        if (!isZoomed || !mainImageRef.current ) return;
 
-        const { left, top, width, height} = e.target.getBoundingClientRect();
-        const mouseX = ((e.clientX - left) / width) * 100;
-        const mouseY = ((e.clientY - top) / height) * 100;
+        const { left, top, width, height} = mainImageRef.current.getBoundingClientRect();
+        const x = e.clientX - left;
+        const y = e.clientY - top;
 
-        const zoomBoxWidth = 25;
-        const zoomBoxHeight = 25;
-        const halfZoomBoxWidth = zoomBoxWidth / 2;
-        const halfZoomBoxHeight = zoomBoxHeight / 2;
+        const boxWidth = width * 0.25;
+        const boxHeight = height * 0.25;
 
-        let newX = mouseX - halfZoomBoxWidth;
-        let newY = mouseY - halfZoomBoxHeight;
+        const mouseX = Math.min(Math.max(boxWidth/2, x), width - boxWidth/2);
+        const mouseY = Math.min(Math.max(boxHeight/2, y), height - boxHeight/2);
 
-        if (newX < 0) newX = 0;
-        if (newY < 0) newY = 0;
-        if (newX > 100 - zoomBoxWidth) newX = 100 - zoomBoxWidth;
-        if (newY > 100 - zoomBoxHeight) newY = 100 - zoomBoxHeight;
+        const posX = ((mouseX - boxWidth/2) / width) * 100;
+        const posY = ((mouseY - boxHeight/2) / height) * 100;
 
-        const zoomX = newX + halfZoomBoxWidth;
-        const zoomY = newY + halfZoomBoxHeight;
+        const zoomX = (mouseX / width) * 100;
+        const zoomY = (mouseY / height) * 100;
 
         setZoomPosition({
-            x: newX,
-            y: newY,
-            zoomX: zoomX,
-            zoomY: zoomY,
+            x: posX,
+            y: posY,
+            zoomX,
+            zoomY
         });
     }
 
@@ -145,11 +161,13 @@ function ProductDetails({ location }) {
             <div id="product-details-container">
                 <div id="product-small-images">
                     {product.images.map((image, index) => (
-                        <img src={image} key={index} alt={product.title} onMouseEnter={() => {setHoveredImage(image)}} />
+                        <img src={image} key={index} alt={product.title} onMouseEnter={() => handleThumbnailHover(image)} />
                     ))}
                 </div>
 
-                <div id="product-image" onMouseMove={handleMouseMove} onMouseEnter={() => setIsZoomed(true)} onMouseLeave={() => setIsZoomed(false)}>
+                <div  id="product-image"
+                      onMouseMove={handleMouseMove}
+                      ref={mainImageRef} onMouseEnter={() => setIsZoomed(true)} onMouseLeave={() => setIsZoomed(false)}>
                     <img src={hoveredImage} alt={product.title}/>
 
                     {isZoomed && (
@@ -170,8 +188,11 @@ function ProductDetails({ location }) {
                     <div id="product-image-zoom">
                         <img src={hoveredImage} alt={`${product.title} zoomed`} 
                         style={{
-                            transform: `scale(3.5) translate(-${zoomPosition.zoomX}%, -${zoomPosition.zoomY}%)`,
-                            transformOrigin: 'top left'
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'contain',
+                          transform: `scale(4) translate(-${zoomPosition.zoomX}%, -${zoomPosition.zoomY}%)`,
+                          transformOrigin: '0 0'
                         }}/>
                     </div>
                 )}
@@ -203,15 +224,22 @@ function ProductDetails({ location }) {
                     <div id="customer-reviews">
                         <h4>Customer reviews</h4>
                         {product.reviews.map((review, index) => (
-                            <>
-                            <p> <img src="/images/user-logo.png" alt="customer-icon" /> {review.reviewerName}</p>
-                            <p>{renderStars(review.rating)} {review.comment}</p>
+                            <div key={index}>
+
+                            <div className="reviewer-info">
+                              <img src="/images/user-logo.png" alt="customer-icon" />
+                              {review.reviewerName}
+                            </div>
+                            <div className="review-content">
+                              {renderStars(review.rating)}
+                              {review.comment}
+                            </div>
                             <p>{new Date(review.date).toLocaleDateString('en-US', {
                                 year: 'numeric',
                                 month: 'long',
                                 day: 'numeric'
                             })}</p>
-                            </>
+                            </div>
                         ))}
                     </div>
 
@@ -244,27 +272,17 @@ function ProductDetails({ location }) {
                     <p>Sold by <span>{product.brand}</span></p>
                   </div>
 
-                  <label htmlFor="select"> Quantity
-                    <select name="quantity" id="quantity">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
+                  <label htmlFor="quantity"> Quantity
+                    <select name="quantity" id="quantity" onChange={handleQuantityChange} value={selectedQuantity}>
+                      {[...Array(15)].map((_, index) => (
+                                                    <option key={index + 1} value={index + 1}>
+                                                        {index + 1}
+                                                    </option>
+                                                ))}
                   </select>
                   </label>
 
-                  <button id="add-to-cart" onClick={() => addToCart(product)}>Add to cart</button>
+                  <button id="add-to-cart" onClick={handleAddToCart}>Add to cart</button>
                   <button id="buy-now">Buy Now</button>
                 </div>
             </div>
