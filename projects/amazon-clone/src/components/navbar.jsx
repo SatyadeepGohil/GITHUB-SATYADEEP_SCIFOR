@@ -655,7 +655,7 @@ const renderActiveSubmenu = () => {
                             {isCategoryShowMore ? (
                                 <>see less <i>&#708;</i></>
                             ) : (
-                                <>see more <i>&709;</i></>
+                                <>see more <i>&#709;</i></>
                             )}
                         </button>
 

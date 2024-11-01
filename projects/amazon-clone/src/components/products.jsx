@@ -1,50 +1,4 @@
-import { useEffect, useState, useRef } from "react";
-
-const useCarousel = (items, itemsToShow) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [itemWidth, setItemWidth] = useState(0);
-    const itemRef = useRef(null);
-
-    useEffect(() => {
-        if (itemRef.current) {
-            setItemWidth(itemRef.current.offsetWidth);
-        }
-
-        // Handle resizing
-        const handleResize = () => {
-            if (itemRef.current) {
-                setItemWidth(itemRef.current.offsetWidth);
-            }
-        };
-
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
-    const nextSlide = () => {
-        setCurrentIndex((prevIndex) => {
-            const nextIndex = prevIndex + itemsToShow;
-            return nextIndex >= items.length ? prevIndex : nextIndex;
-        });
-    };
-
-    const prevSlide = () => {
-        setCurrentIndex((prevIndex) => {
-            const nextIndex = prevIndex - itemsToShow;
-            return nextIndex < 0 ? 0 : nextIndex;
-        });
-    };
-
-    return {
-        currentIndex,
-        nextSlide,
-        prevSlide,
-        isFirstSlide: currentIndex === 0,
-        isLastSlide: currentIndex >= items.length - itemsToShow,
-        itemRef,
-        itemWidth,
-    };
-};
+import { useCarousel } from "./useCarousel";
 
 const CategoryCarousel = () => {
     const categoryImages = [
@@ -59,8 +13,7 @@ const CategoryCarousel = () => {
         "/images/category-9.png"
     ];
 
-    const ItemsToShow = 3;
-    const { currentIndex, nextSlide, prevSlide, isFirstSlide, isLastSlide, itemRef, itemWidth } = useCarousel(categoryImages, ItemsToShow);
+    const { currentIndex, nextSlide, prevSlide, isFirstSlide, isLastSlide} = useCarousel({items: categoryImages, itemsToShow: 3});
 
     return (
         <div className="carousel">
@@ -72,12 +25,12 @@ const CategoryCarousel = () => {
             <div
                 className="carousel-image-container"
                 style={{
-                    transition: "transform 0.3s ease",
-                    transform: `translateX(-${currentIndex * itemWidth}px)`
+                    transition: "transform 0.3s ease-in-out",
+                    transform: `translateX(-${currentIndex * (100 / 6)}%)`
                 }}
             >
                 {categoryImages.map((categoryImage, index) => (
-                    <div key={index} ref={index === 0 ? itemRef : null}>
+                    <div key={index}>
                          <img src={categoryImage} alt={`Category ${index + 1}`}
                     />
                     </div>
@@ -109,8 +62,7 @@ const ProductCarousel = () => {
         "/images/product-carousel-15.jpg",
     ];
 
-    const ItemsToShow = 3;
-    const { currentIndex, nextSlide, prevSlide, isFirstSlide, isLastSlide, itemRef, itemWidth } = useCarousel(productImages, ItemsToShow);
+    const { currentIndex, nextSlide, prevSlide, isFirstSlide, isLastSlide} = useCarousel({items: productImages, itemsToShow: 3});
 
     return (
         <div className="carousel">
@@ -123,11 +75,11 @@ const ProductCarousel = () => {
                 className="carousel-image-container"
                 style={{
                     transition: "transform 0.3s ease",
-                    transform: `translateX(-${currentIndex * itemWidth}px)`
+                    transform: `translateX(-${currentIndex * (100 / 6)}%)`
                 }}
             >
                 {productImages.map((productImage, index) => (
-                    <div key={index} ref={index === 0 ? itemRef : null}>
+                    <div key={index}>
                          <img src={productImage} alt={`product ${index + 1}`}
                     />
                     </div>

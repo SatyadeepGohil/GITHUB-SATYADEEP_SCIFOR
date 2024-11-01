@@ -124,15 +124,15 @@ function SearchResults({ location }) {
                 <div>
                     {results && results.length > 0 ? (
                       results.map((item, index) => (
-                          <div className="search-result-card">
+                          <div className="search-result-card" key={index}>
 
-                                <Link key={item.id} to={`/product/${item.id}`}>
+                                <Link to={`/product/${item.id}`}>
                                 <img src={item.thumbnail} alt={item.title}/>
                                 </Link>
 
                                 <div>
 
-                                  <Link key={item.id} to={`/product/${item.id}`}>
+                                  <Link to={`/product/${item.id}`}>
                                   <h4>{item.title}</h4>
                                   </Link>
 
