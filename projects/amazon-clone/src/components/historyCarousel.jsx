@@ -18,10 +18,10 @@ const HistoryCarousel = () => {
     }
 
     return (
-        <div id="bottom-history">
+        <div id="history">
             <h4>Your Browsing History</h4>
-            <div id="bottom-history-container">
-                <div id="bottom-history-wrapper" style={{ transform: `translateX(-${currentIndex * 170}px)`, transition: 'transform .3s ease'}}>
+            <div id="history-container">
+                <div id="history-wrapper" style={{ transform: `translateX(-${currentIndex * 170}px)`, transition: 'transform .3s ease'}}>
                     {browsingHistory.map((image, index) => (
                     <Link to={`/product/${image.id}`} className="history-item" key={index}>
                         <img src={image.thumbnail} alt={`image-${index}`} />

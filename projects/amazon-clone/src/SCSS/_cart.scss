@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
     width: 100%;
     #cart-container {
             width: 80%;
@@ -48,5 +49,27 @@
     #sub-total {
         align-self: flex-start;
         background-color: white;
+        padding: 10px;
+        font-size: 0.8rem;
+
+        p {
+            margin: 10px 0;
+        }
+
+        button {
+            width: 100%;
+            font-size: 0.6rem;
+            border: none;
+            background-color: #FFD814;
+            padding: 5px;
+            border-radius: 10px;
+        }
     }
+}
+
+#cart-history {
+    align-self: flex-start;
+    width: 80%;
+    margin-left: 4.35%;
+    margin-top: 20px;
 }

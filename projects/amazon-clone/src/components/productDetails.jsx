@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import Header from "./header";
 import NavBar from "./navbar";
@@ -283,7 +283,9 @@ function ProductDetails({ location }) {
                   </label>
 
                   <button id="add-to-cart" onClick={handleAddToCart}>Add to cart</button>
+                  <Link to={'/cart'}>
                   <button id="buy-now">Buy Now</button>
+                  </Link>
                 </div>
             </div>
         )}

@@ -275,7 +275,7 @@ header {
                 }
 
                 &:hover {
-                    border: 1px solid white;
+                    outline: $white-border;
 
                     #language-options, #arrow-head {
                         visibility: visible;
@@ -378,7 +378,7 @@ header {
         }
 
         &:hover {
-            border: 1px solid white;
+            outline: $white-border;
             #account-arrow-head, #account-manager {
                 visibility: visible;
             }
@@ -396,7 +396,7 @@ header {
         }
 
         &:hover {
-            border: $white-border;
+            outline: $white-border;
         }
     }
 
@@ -407,8 +407,8 @@ header {
         position: relative;
         margin-right: 10px;
         img {
-            width: 25px;
-            height: 25px;
+            width: 30px;
+            height: 30px;
         }
 
         span {
@@ -420,15 +420,15 @@ header {
 
         #number-of-order {
             position: absolute;
-            top: 10%;
-            left: 30%;
-            font-size: 0.52rem;
+            top: 20%;
+            left: 35%;
+            font-size: 0.5rem;
             font-weight: 300;
             color: orange;
         }
 
         &:hover {
-            border: $white-border;
+            outline: $white-border;
         }
     }
 }

@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import HistotyCarousel from './historyCarousel';
 
 function NavBar() {
     const [isCategoryShowMore, setCategoryShowMore] = useState(false);
@@ -600,7 +601,12 @@ const renderActiveSubmenu = () => {
                     <li><Link to="/">Gift Cards</Link></li>
                     <li><Link to="/">AmazonBasics</Link></li>
                     <li><Link to="/">Gift Ideas</Link></li>
-                    <li><Link to="/">Browsing History <i>&#x25BC;</i></Link></li>
+                    <li id="browsing-history"><Link to="/">Browsing History <i>&#x25BC;</i></Link>
+                      <span id="arrow-head"></span>
+                       <div id="nav-browsing-history-container">
+                        <HistotyCarousel />
+                      </div>
+                    </li>
                     <li><Link to="/">Customer Service</Link></li>
                     <li><Link to="/">User's Amazon.in</Link></li>
                 </ul>
