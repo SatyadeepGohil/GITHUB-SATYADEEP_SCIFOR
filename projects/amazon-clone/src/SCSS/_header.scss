@@ -405,10 +405,10 @@ header {
         justify-content: center;
         align-items: center;
         position: relative;
-        margin-right: 10px;
+        margin-right: 5px;
         img {
-            width: 30px;
-            height: 30px;
+            width: 22px;
+            height: 22px;
         }
 
         span {
@@ -420,9 +420,9 @@ header {
 
         #number-of-order {
             position: absolute;
-            top: 20%;
-            left: 35%;
-            font-size: 0.5rem;
+            top: 15%;
+            left: 25%;
+            font-size: 0.45rem;
             font-weight: 300;
             color: orange;
         }

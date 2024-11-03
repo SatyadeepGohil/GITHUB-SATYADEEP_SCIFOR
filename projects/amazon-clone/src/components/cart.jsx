@@ -116,8 +116,8 @@ function Cart({ location }) {
                                                                 </option>
                                                             ))}
                                                         </select>
-                                                    </label>
-                                                    <button onClick={() => removeFromCart(item.id)}>Delete</button>
+                                                    </label><br />
+                                                    <button id="cart-item-delete" onClick={() => removeFromCart(item.id)}>Delete</button>
                                                 </div>
                                             </div>
                                             <p className="cart-item-price">

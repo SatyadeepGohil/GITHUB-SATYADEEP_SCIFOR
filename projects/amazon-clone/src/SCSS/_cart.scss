@@ -39,6 +39,23 @@
                     margin-left: auto;
                     align-self: flex-start;
                 }
+
+                p {
+                    margin: 10px 0;
+                }
+
+                .cart-item-deletebtn {
+                    margin-left: 10px;
+                    border: none;
+                    color: blue;
+                    border-radius: 2px;
+                    padding: 3px;
+                    font-size: 0.6rem;
+                    
+                    &:active, &:focus {
+                        border: 1px solid blue;
+                    }
+                }
             }
 
             .cart-total {
@@ -69,7 +86,7 @@
 
 #cart-history {
     align-self: flex-start;
-    width: 80%;
+    width: 100%;
     margin-left: 4.35%;
     margin-top: 20px;
 }

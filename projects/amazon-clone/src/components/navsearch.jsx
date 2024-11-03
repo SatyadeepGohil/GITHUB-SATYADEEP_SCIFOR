@@ -73,7 +73,7 @@ const NavSearch = () => {
         const width = tempSpan.offsetWidth;
         document.body.removeChild(tempSpan);
 
-        const calculatedWidth = Math.max(width + 30, 50)
+        const calculatedWidth = Math.max(width + 30, 30)
 
         setSelectWidth(calculatedWidth);
     }

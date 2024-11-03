@@ -284,7 +284,7 @@ function ProductDetails({ location }) {
 
                   <button id="add-to-cart" onClick={handleAddToCart}>Add to cart</button>
                   <Link to={'/cart'}>
-                  <button id="buy-now">Buy Now</button>
+                  <button id="buy-now" onClick={handleAddToCart}>Buy Now</button>
                   </Link>
                 </div>
             </div>

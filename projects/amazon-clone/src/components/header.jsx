@@ -1,9 +1,11 @@
 import { useCart } from './cartContext';
 import { Link } from 'react-router-dom'
+import { useAuth } from './authContext';
 import NavSearch from "./navsearch";
 
 function Header({ location }) {
     const { getTotalItemCount } = useCart();
+    const { currentUser } = useAuth();
 
     return (
         <>
@@ -15,7 +17,7 @@ function Header({ location }) {
                 <div id="location-text">
                     <img src="/images/location.png" alt="location-icon" id="location-icon"/>
                     <span>
-                        <p id="light-text">Deliver to Sharma</p>
+                        <p id="light-text">Deliver to {currentUser ? currentUser.name : 'Guest'}</p>
                         <p>{location}</p>
                     </span>
                 </div>
@@ -73,7 +75,7 @@ function Header({ location }) {
 
                     <div id="account">
                         <span id="account-arrow-head"></span>
-                        <p>Hello, John</p>
+                        <p>Hello, {currentUser ? currentUser.name : 'Guest'}</p>
                         <p>Account & Lists <i>&#x25BC;</i></p>
 
                         <div id="account-manager">

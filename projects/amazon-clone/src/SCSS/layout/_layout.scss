@@ -1,0 +1,193 @@
+@media (min-width: 320px) and (max-width: 480px) {
+    body {
+        background-color: aqua;
+    }
+
+    header {
+        gap: 5px;
+        #nav-logo {
+            width: 20px;
+            height: 5px;
+        }
+
+        #location-text {
+            font-size: 0.2rem;
+
+            #location-icon {
+                width: 5px;
+                height: 5px;
+            }
+
+            #light-text {
+                font-size: inherit;
+            }
+        }
+
+        #nav-search {
+            #search {
+                font-size: 0.4rem;
+                padding-left: 5px;
+                min-width: 50px;
+            }
+
+            #category {
+                min-width: 40px;
+                font-size: 0.4rem;
+                padding: 3px 3px 3px 5px;
+            }
+
+            #search-btn {
+                padding: 5px;
+            }
+
+            #search-btn img{
+                width: 8px;
+                height: 8px;
+            }
+        }
+
+        #nav-customer {
+            #lang {
+                padding: 5px;
+
+                img {
+                    width: 8px;
+                    height: 8px;
+                }
+
+                p {
+                    font-size: 0.4rem;
+                }
+
+                #language-options {
+                    left: -120px;
+                }
+            }
+
+            #account {
+                p {
+                    font-size: .2rem;
+                }
+            }
+
+            #returns {
+                font-size: .2rem;
+            }
+        }
+
+        #cart {
+            span {
+                font-size: 0.3rem;
+            }
+            img {
+                height: 15px;
+                width: 15px;
+            }
+
+            #number-of-order {
+                font-size: 0.3rem;
+                top: 15%;
+                left: 25%;
+            }
+        }
+    }
+
+    nav {
+        font-size: 0.2rem;
+        ul {
+            gap: 0;
+        }
+
+        li {
+            padding: 1.5px;
+            margin: 1.5px;
+        }
+
+        button img {
+            width: 5px;
+            height: 5px;
+        }
+    }
+
+    #hero-carousel-wrapper {
+        top: 80px;
+        #hero-carousel {
+            height: 250px;
+        }
+    }
+
+    #products-container {
+        justify-content: center;
+
+        .carousel .carousel-image-container {
+            margin-left: 200px;
+        }
+
+        .carousel .carousel-image-container div img{
+            height: 50px;
+            width: 50px;
+        }
+    }
+
+    #history #history-container #history-wrapper img {
+        width: 75px;
+        height: 75px;
+    }
+
+    #search-result-container .search-result-card {
+        img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .pricing-info .discounted-price {
+            font-size: 1rem;
+        }
+    }
+
+    #cart #cart-container {
+        .cart-item-container {
+            .cart-item-price {
+                    font-size: 0.7rem;
+                }
+        }
+    }
+
+    #cart #sub-total {
+        font-size: 0.8rem;
+    }
+
+    #cart #cart-container .cart-item-container .cart-item{
+        h1 {
+            font-size: 0.7rem;
+        }
+        p {
+            font-size: 0.5rem;
+        }
+
+        img {
+            height: 100px;
+            width: 100px;
+        }
+    }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+    body {
+        background-color: red;
+    }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    body {
+        background-color: green;
+    }
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+    body {
+        background-color: yellow;
+    }
+}
+@media (min-width: 1201px) {
+    body {
+        background-color: purple;
+    }
+}
