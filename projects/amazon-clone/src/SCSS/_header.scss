@@ -11,7 +11,7 @@ header {
     width: 100%;
 
     #nav-logo {
-        width: 60px;
+        width: 70px;
         height: 20px;
         margin-left: 12px;
 
@@ -26,7 +26,7 @@ header {
         justify-content: center;
         align-items: center;
         padding: 3px;
-        font-size: 0.55rem;
+        font-size: 0.7rem;
         text-wrap: nowrap;
 
         img {
@@ -36,7 +36,7 @@ header {
 
         #light-text {
             font-weight: 100;
-            font-size: 0.5rem;
+            font-size: 0.7rem;
             text-align: center;
         }
 
@@ -138,13 +138,13 @@ header {
                 padding: 10px;
         
                 img {
-                    width: 12px;
-                    height: 12px;
+                    width: 18px;
+                    height: 18px;
                 }
 
                 p {
                     margin-left: 5px;
-                    font-size: 0.6rem;
+                    font-size: 0.8rem;
                     text-wrap: nowrap;
                     i {
                         font-size: 0.3rem;
@@ -165,7 +165,7 @@ header {
                 #arrow-head {
                     position: absolute;
                     visibility: hidden;
-                    top: 22px;
+                    top: 26px;
                     right: 6px;
                     width: 0;
                     height: 0;
@@ -186,7 +186,7 @@ header {
                     padding: 10px;
                     font-size: 0.7rem;
                     position: absolute;
-                    top: 30px;
+                    top: 34px;
                     left: -2px;
                     z-index: 5;
 
@@ -292,7 +292,7 @@ header {
         #account-arrow-head {
             position: absolute;
             visibility: hidden;
-            top: 25px;
+            top: 38px;
             right: 1px;
             width: 0;
             height: 0;
@@ -304,7 +304,7 @@ header {
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: .5rem;
+            font-size: .7rem;
 
             i {
                 font-size: 0.3rem;
@@ -323,9 +323,8 @@ header {
         #account-manager {
             position: absolute;
             background-color: white;
-            top: 32px;
+            top: 45px;
             right: -30px;
-            font-size: 0.7rem;
             visibility: hidden;
             padding: 10px;
             border-radius: 2px;
@@ -364,7 +363,7 @@ header {
                 }
 
                 li {
-                    font-size: 0.5rem;
+                    font-size: 0.8rem;
                 }
 
                 a:hover {
@@ -387,7 +386,7 @@ header {
 
     #returns {
         padding: 5px;
-        font-size: 0.4rem;
+        font-size: 0.7rem;
         p {
             span {
                 font-weight: 100;
@@ -400,19 +399,19 @@ header {
         }
     }
 
-    #cart {
+    #cart-logo {
         display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
-        margin-right: 5px;
+        margin-right: 20px;
         img {
-            width: 22px;
-            height: 22px;
+            width: 28px;
+            height: 28px;
         }
 
         span {
-            font-size: 0.4rem;
+            font-size: 0.7rem;
             align-self: flex-end;
             text-decoration: none;
             color: white;
@@ -420,9 +419,9 @@ header {
 
         #number-of-order {
             position: absolute;
-            top: 15%;
+            top: 10%;
             left: 25%;
-            font-size: 0.45rem;
+            font-size: 0.7rem;
             font-weight: 300;
             color: orange;
         }

@@ -7,7 +7,8 @@
 body {
     font-family: "Amazon Ember Regular", sans-serif;
     font-weight: normal;
-    width: 100%;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
 #root {
@@ -19,6 +20,7 @@ body {
 
 @import './header';
 @import './navbar';
+@import './authentication';
 @import './hero-carousel';
 @import './products';
 @import './search-result';

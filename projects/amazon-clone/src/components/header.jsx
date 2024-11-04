@@ -5,7 +5,7 @@ import NavSearch from "./navsearch";
 
 function Header({ location }) {
     const { getTotalItemCount } = useCart();
-    const { currentUser } = useAuth();
+    const { currentUser, logout } = useAuth();
 
     return (
         <>
@@ -110,7 +110,7 @@ function Header({ location }) {
                                         <li><a href="#">Devices</a></li>
                                         <li><a href="#">Your Free Amazon Business Account</a></li>
                                         <li><a href="#">Switch Accounts</a></li>
-                                        <li><a href="#">Sign Out</a></li>
+                                        <li><a href="#" onClick={logout}>Sign Out</a></li>
                                     </div>
                             </div>
                         </div>
@@ -119,12 +119,10 @@ function Header({ location }) {
                     <div id="returns">
                         <p> <span>Returns</span> <br/> & Orders</p>
                     </div>
-                    <Link to="/cart">
-                        <div id="cart">
+                    <Link to="/cart" id='cart-logo'>
                             <img src="/images/cart.svg" alt="shopping cart"/>
                             <span>cart</span>
                             <p id="number-of-order">{getTotalItemCount()}</p>
-                        </div>
                     </Link>
 
                 </div>

@@ -133,7 +133,7 @@ function SearchResults({ location }) {
                                 <div>
 
                                   <Link to={`/product/${item.id}`}>
-                                  <h4>{item.title}</h4>
+                                  <h2>{item.title}</h2>
                                   </Link>
 
                                   {renderStars(item.rating, item.reviews)}

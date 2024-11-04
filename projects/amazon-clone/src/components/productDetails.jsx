@@ -155,7 +155,7 @@ function ProductDetails({ location }) {
 
     return (
         <>
-        <Header />
+        <Header location={location}/>
         <NavBar />
         {product && (
             <div id="product-details-container">
