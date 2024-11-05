@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "./authContext";
 import Header from "./header";
 import NavBar from "./navbar";
@@ -25,7 +25,7 @@ const Signup = ({ location }) => {
 
     return (
         <>
-            <Header />
+            <Header location={location}/>
             <NavBar />
             <div className="auth-container">
                 <form onSubmit={handleSubmit}>
@@ -58,7 +58,10 @@ const Signup = ({ location }) => {
                             required
                         />
                     </div>
-                    <button type="submit">Sign Up</button>
+                    <div id="login-signup-container">
+                        <button type="submit">Sign Up</button>
+                        <p>If you already have an account then <Link to={'/login'}>Login here</Link></p>
+                    </div>
                 </form>
             </div>
             <Footer />

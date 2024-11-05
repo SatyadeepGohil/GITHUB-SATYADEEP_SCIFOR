@@ -512,6 +512,10 @@
     #cart-history {
         margin-left: 2%;
     }
+
+    .auth-container {
+        width: 70%;
+    }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
     header {
@@ -733,6 +737,10 @@
 
     #cart-history {
         margin-left: 2%;
+    }
+
+    .auth-container {
+        width: 50%;
     }
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
