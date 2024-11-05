@@ -14,11 +14,15 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(false);
     }, []);
 
-    const signup = (email, password, name) => {
+     const checkExistingUser = (email) => {
         const users = JSON.parse(localStorage.getItem('users') || '[]');
-        if (users.find(user => user.email === email)) {
-            throw new Error('User already exists');
-        }
+        return users.some(user => user.email === email);
+    };
+
+    const signup = (email, password, name) => {
+       if (checkExistingUser(email)) {
+        throw new Error('User already exists');
+       } 
 
         const newUser = {
             id: Date.now().toString(),
@@ -74,7 +78,8 @@ export const AuthProvider = ({ children }) => {
             signup,
             login,
             logout,
-            updateUserData
+            updateUserData,
+            checkExistingUser
         }}>
             {!isLoading && children}
         </AuthContext.Provider>

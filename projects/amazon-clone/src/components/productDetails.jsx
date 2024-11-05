@@ -198,7 +198,7 @@ function ProductDetails({ location }) {
                 )}
 
                 <div id="product-info">
-                    <h4>{product.title}</h4>
+                    <h1>{product.title}</h1>
 
                     <div id="rating-display">
                         <p>{product.rating}</p>

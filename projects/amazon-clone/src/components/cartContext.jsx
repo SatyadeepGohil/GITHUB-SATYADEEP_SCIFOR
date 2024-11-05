@@ -38,7 +38,9 @@ export const CartProvider = ({ children }) => {
         localStorage.setItem('currentUser', JSON.stringify(updatedCurrentUser));
         
         // Update user data in context
-        updateUserData({ cart: items });
+        setTimeout(() => {
+            updateUserData({ cart: items });
+        }, 500);
     }, [currentUser, updateUserData]);
 
     const addToCart = useCallback((item, quantity = 1) => {

@@ -11,13 +11,8 @@ import Cart from './components/cart';
 import Login from './components/login';
 import Signup from "./components/signup";
 
-const checkExistingUser = (email) => {
-  const users = JSON.parse(localStorage.getItem('users') || '[]');
-  return users.some(user => user.email === email);
-};
-
 const AuthRoute = ({ children }) => {
-  const { currentUser, isLoading } = useAuth();
+  const { currentUser, isLoading, checkExistingUser } = useAuth();
   const location = useLocation();
 
   if (isLoading) {
@@ -38,9 +33,9 @@ const AuthRoute = ({ children }) => {
   if (email) {
     const userExists = checkExistingUser(email);
     if (userExists) {
-      return <Navigate to={`/login?email=${email}`} replace />;
+      return <Navigate to={`/login?email=${email}`} state={{from: location}}replace />;
     } else {
-      return <Navigate to={`/signup?email=${email}`} replace />;
+      return <Navigate to={`/signup?email=${email}`} state={{from: location}} replace />;
     }
   }
 
@@ -61,7 +56,7 @@ const ProtectedRoute = ({ children }) => {
   }
 
   if (!currentUser) {
-    return <Navigate to="/signup" state={{ from: location }} replace />;
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   return children;
