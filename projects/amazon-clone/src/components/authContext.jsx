@@ -20,6 +20,8 @@ export const AuthProvider = ({ children }) => {
     };
 
     const signup = (email, password, name) => {
+        const users = JSON.parse(localStorage.getItem('users' || "[]"));
+
        if (checkExistingUser(email)) {
         throw new Error('User already exists');
        } 
@@ -33,9 +35,9 @@ export const AuthProvider = ({ children }) => {
             browsingHistory: []
         };
 
-        users.push(newUser);
-        localStorage.setItem('users', JSON.stringify(users));
-
+        const updatedUsers = [...users, newUser];
+        localStorage.setItem('users', JSON.stringify(updatedUsers));
+        
         setCurrentUser(newUser);
         localStorage.setItem('currentUser', JSON.stringify(newUser));
     };
