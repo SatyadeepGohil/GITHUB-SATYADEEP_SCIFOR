@@ -6,7 +6,7 @@ import HistoryCarousel from "./historyCarousel";
 import Footer from "./footer";
 
 function Cart({ location }) {
-    const { cartItems, setItemQuantity, removeFromCart, clearCart } = useCart();
+    const { cartItems, setItemQuantity, removeFromCart, clearSelectedItems} = useCart();
     const [selectedItems, setSelectedItems] = useState(new Set());
     const [selectAll, setSelectAll] = useState(false);
     const [orderPlaced, setOrderPlaced] = useState(false);
@@ -55,7 +55,8 @@ function Cart({ location }) {
             alert("Please select items to purchase");
             return;
         }
-        clearCart();
+
+        clearSelectedItems(Array.from(selectedItems));
         setSelectedItems(new Set());
         setSelectAll(false);
         setOrderPlaced(true);

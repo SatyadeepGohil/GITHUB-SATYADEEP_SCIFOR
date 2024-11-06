@@ -90,10 +90,13 @@ export const CartProvider = ({ children }) => {
         return item ? item.quantity : 0;
     }, [cartItems]);
 
-    const clearCart = useCallback(() => {
-        setCartItems([]);
-        syncToStorage([]);
-    }, [syncToStorage]);
+    const clearSelectedItems = useCallback((selectedItemIds) => {
+        setCartItems(prevItems => {
+            const updateItems = prevItems.filter(item => !selectedItemIds.includes(item.id));
+            syncToStorage(updateItems);
+            return updateItems;
+        })
+    })
 
     const value = {
         cartItems,
@@ -102,7 +105,7 @@ export const CartProvider = ({ children }) => {
         setItemQuantity,
         getTotalItemCount,
         getItemCountById,
-        clearCart
+        clearSelectedItems
     };
 
     return (

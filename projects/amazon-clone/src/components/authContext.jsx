@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const signup = (email, password, name) => {
-        const users = JSON.parse(localStorage.getItem('users' || "[]"));
+        const users = JSON.parse(localStorage.getItem('users') || ("[]"));
 
        if (checkExistingUser(email)) {
         throw new Error('User already exists');
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const login = (email, password) => {
-        const users = JSON.parse(localStorage.getItem('users' || '[]'));
+        const users = JSON.parse(localStorage.getItem('users') || ('[]'));
         const user = users.find(u => u.email === email && u.password === password);
 
         if (!user) {
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         if (currentUser) {
-            const users = JSON.parse(localStorage.getItem('users' || '[]'));
+            const users = JSON.parse(localStorage.getItem('users') || ('[]'));
             const updatedUsers = users.map(user => user.id === currentUser.id ? currentUser : user);
             localStorage.setItem('users', JSON.stringify(updatedUsers));
         }
